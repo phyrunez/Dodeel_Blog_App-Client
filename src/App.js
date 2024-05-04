@@ -7,6 +7,7 @@ import SigninPage from './pages/signin/SigninPage'
 import AboutUsPage from './pages/about/AboutUsPage'
 import ContactUsPage from './pages/contactUs/ContactUsPage'
 import SignUpPage from './pages/signin/SignUpPage';
+import NotFoundPage from './pages/not-found/NotFoundPage';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path='/register' element={<SignUpPage />} />
         <Route path='/about' element={<AboutUsPage />} />
         <Route path='/contact-us' element={<ContactUsPage />} />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
       <Toaster />
     </div>

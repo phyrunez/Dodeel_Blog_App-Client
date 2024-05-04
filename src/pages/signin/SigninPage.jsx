@@ -107,7 +107,7 @@ const SigninPage = () => {
               Signin
             </button>
             <p className="text-sm text-center font-semibold text-[#5a7184]">
-              You have an account? <Link to="/register" className='text-primary'>Register now</Link>
+              Create an account? <Link to="/register" className='text-primary'>Register now</Link>
             </p>
           </form>
         </div>
