@@ -27,7 +27,7 @@ const Articles = () => {
     <>
       <div className="container mx-auto w-10/12 px-12 flex justify-between py-3 items-center">
         <SearchArticles />
-        <div className="flex flex-row justify-end gap-x-4">
+        <div className="hidden xl:flex flex-row justify-end gap-x-4">
           {blogCategories.map(item => {
             return (
               <ArticlesNav
