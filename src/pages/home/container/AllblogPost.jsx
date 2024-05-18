@@ -1,7 +1,9 @@
 import { images } from "../../../constants"
+import BlogCard from "../../../components/BlogCard"
 
 const AllblogPost = () => {
   return (
+<<<<<<< HEAD
     <div className="container mx-auto w-[77%] grid grid-cols-3 my-20 gap-4">
         <div className="card card-compact w-96">
             <figure>
@@ -60,6 +62,40 @@ const AllblogPost = () => {
                 </div>
             </div>
         </div>
+=======
+    <div class="container p-4 mx-auto w-full flex flex-col items-center md:flex-row lg:my-6 md:justify-evenly">
+        <BlogCard 
+          css = {"card card-compact w-full md:w-[45%] xl:w-96"}
+          images = {images.firstBlog}
+          category = {"Entertainment"}
+          date = {"13 March 2024"}
+          title = {"Who is the best singer on the chart?"}
+          author = {"By " + "Joseph Brian"}
+          desc = {"chart by Billboard which ranks the all-time greatest artists based on their performance on the weekly Billboard Hot 100 and "}
+        />    
+
+        <BlogCard 
+          css = {"card card-compact w-full md:w-[45%] xl:w-96"}
+          images = {images.thirdBlog}
+          category = {"Entertainment"}
+          date = {"13 March 2024"}
+          title = {"Who is the best singer on the chart?"}
+          author = {"By " + "Joseph Brian"}
+          desc = {"chart by Billboard which ranks the all-time greatest artists based on their performance on the weekly Billboard Hot 100 and "}
+        />    
+
+        <BlogCard 
+          css = {"hidden xl:block card card-compact w-full md:w-[45%] xl:w-96"}
+          images = {images.secondBlog}
+          category = {"Entertainment"}
+          date = {"13 March 2024"}
+          title = {"Who is the best singer on the chart?"}
+          author = {"By " + "Joseph Brian"}
+          desc = {"chart by Billboard which ranks the all-time greatest artists based on their performance on the weekly Billboard Hot 100 and "}
+        />            
+
+            
+>>>>>>> 7c9514d8e42617dfecca9d061cf3ea883ffbeea4
     </div>
   )
 }

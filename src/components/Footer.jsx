@@ -19,26 +19,26 @@ const NavItem = ({ item }) => {
 const Footer = () => {
   return (
     <>
-        <section className="bg-[rgb(2,87,80)] lg:py-[5rem]">
+        <section className="bg-[rgb(2,87,80)] lg:py-[5rem] ">
             <div className="rounded-xl">
                 <img className="absolute object-cover bg-center bg-contain max-h-[150px] w-[40%] -mt-20" src={images.Vector} alt="vector" />
             </div>
-            <footer className="container my-15 mx-auto max-w-[40%] px-12 py-4 items-center">
+            <footer className="container my-15 mx-auto w-full md:w-[70%] xl:max-w-[50%] px-12 py-4 items-center">
                 <h1 className='font-montserrat text-3xl text-center font-bold py-5 text-white md:text-center md:text-3xl lg:text-center lg:text-3xl lg:font-bold'>
                     Get our stories delivered From us to your inbox weekly.
                 </h1>
-                <div className="flex flex-row gap-x-2 my-4 mx-auto w-[70%]">
-                <input 
-                    className='placeholder:font-ss font-ss text-[#c4c4c4] placeholder:text-[#c4c4c4] rounded-lg pl-4 pr-3 py-2 w-[60%] focus:outline-none shadow-[rgba(50,50,93,0.25)_0px_6px_12px_-2px,_rgba(0,0,0,0.3)_0px_3px_7px_-3px] md:py-2'
-                    type="email" 
-                    name='email'
-                    placeholder="Your Email"
-                />
-                <button
-                    className="mt-5 lg:mt-0 border border-white rounded-md bg-[#025750] px-3 py-1 text-white font-semibold hover:bg-white hover:text-[#025750] transition-all duration-300"
-                >
-                    Get started
-                </button>
+                <div className="flex flex-col xl:flex-row gap-x-2 space-y-2 my-4 mx-auto w-full xl:w-[70%] items-center">
+                    <input 
+                        className='placeholder:font-ss font-ss text-[#c4c4c4] placeholder:text-[#c4c4c4] rounded-lg pl-4 pr-3 py-2 w-full xl:w-[60%] focus:outline-none shadow-[rgba(50,50,93,0.25)_0px_6px_12px_-2px,_rgba(0,0,0,0.3)_0px_3px_7px_-3px] md:py-2'
+                        type="email" 
+                        name='email'
+                        placeholder="Your Email"
+                    />
+                    <button
+                        className="mt-5 lg:mt-0 border border-white rounded-md bg-[#025750] px-3 py-1 text-white font-semibold hover:bg-white hover:text-[#025750] transition-all duration-300"
+                    >
+                        Get started
+                    </button>
                 </div>
                 <p className='font-montserrat text-xs mx-auto max-w-md text-center text-[#bbbbbb] mt-5 md:text-center md:text-xs lg:text-center lg:text-xs'>
                     Get a response tomorrow if you submit by 9pm today. If we received after 9pm will get a reponse the following day.
