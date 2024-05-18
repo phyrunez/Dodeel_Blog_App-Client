@@ -28,6 +28,7 @@ const SigninPage = () => {
     },
     onError: (error) => {
       toast.error(error.message)
+      console.log(error.message)
     }
   })
 

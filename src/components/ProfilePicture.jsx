@@ -63,6 +63,7 @@ const ProfilePicture = ({ avatar }) => {
         <div className='w-full flex items-center gap-x-4'>
             <div className='relative w-20 h-20 rounded-full  outline outline-offset-2 outline-1 outline-[#025750] overflow-hidden'>
                 <label htmlFor="profilePicture" className='cursor-pointer absolute inset-0 rounded-full bg-transparent'>
+                    {console.log(avatar)}
                     {avatar ? (
                         <img 
                             src={stables.UPLOAD_FOLDER_BASE_URL + avatar} 

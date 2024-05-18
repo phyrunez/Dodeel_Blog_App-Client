@@ -2,7 +2,7 @@ import axios from "axios"
 
 export const signup = async ({ name, email, password }) => {
     try {
-        const { data } = await axios.post('api/users/register', {
+        const { data } = await axios.post('/api/users/register', {
             name,
             email,
             password
@@ -22,6 +22,7 @@ export const signin = async ({ email, password }) => {
             email,
             password
         })
+        console.log(data)
         return data
     } catch (error) {
         if (error.response && error.response.data.message) throw new Error(error.response.data.message)
@@ -38,10 +39,11 @@ export const getUserProfile = async({ token }) => {
         }
 
         const { data } = await axios.get('/api/users/profile', config);
+        console.log(data)
         return data;
     } catch (error) {
         if(error.response && error.response.data.message) throw new Error(error.response.data.message)
-        throw new Error(error.message)
+        // throw new Error(error.message)
     }
 }
 

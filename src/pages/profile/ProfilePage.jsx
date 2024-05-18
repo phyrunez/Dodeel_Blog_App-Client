@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import MainLayout from '../../components/MainLayout'
 import ProfilePicture from '../../components/ProfilePicture'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
@@ -14,17 +14,25 @@ const ProfilePage = () => {
   const [emailVal, setEmailVal] = useState("")
   const [passwordVal, setPasswordVal] = useState("")
 
-  const dispatch = useDispatch()
   const userState = useSelector(state => state.user)
-  const navigate = useNavigate()
-  const queryClient = useQueryClient()
 
-  const { data: profileData, isPending: profileIsPending, error } = useQuery({
-    queryFn: () => {
-      return getUserProfile({ token: userState.userInfo?.token })
-    },
-    queryKey: ['profile']
-  })
+  const [ profileIsLoading, setProfileIsLoading] = useState(false)
+  const [profileData, setProfileData] = useState(userState.userInfo)
+
+  // const queryClient = useQueryClient()
+  
+
+  // const { data: profileData, isLoading: profileIsLoading, error: profileError } = useQuery({
+  //   queryFn: function() {
+  //       return getUserProfile({ token: userState.userInfo.token });
+  //   },
+  //   queryKey: ['profile']
+  // })
+
+  console.log(profileData)
+
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
 
   const { mutate, isLoading: updateProfileIsLoading } = useMutation({
     mutationFn: ({ name, email, password }) => {
@@ -35,8 +43,8 @@ const ProfilePage = () => {
     },
     onSuccess: (data) => {
       dispatch(userActions.setUserInfo(data));
-      localStorage.setItem("account", JSON.stringify(data));
-      queryClient.invalidateQueries(["profile"]);
+      localStorage.setItem("user-account", JSON.stringify(data));
+      // queryClient.invalidateQueries(["profile"]);
       toast.success("Profile updated successfully")
     },
     onError: (error) => {
@@ -51,9 +59,10 @@ const ProfilePage = () => {
       password: ""
     },
     values: {
-      name: profileIsPending ? " " : profileData.name,
-      email: profileIsPending ? " " : profileData.email,
+      name: profileIsLoading ? " " : profileData.name,
+      email: profileIsLoading ? " " : profileData.email,
     },
+    
     mode: 'onChange'
   })
 
@@ -135,7 +144,7 @@ const ProfilePage = () => {
 
             <button 
               type='submit' 
-              disabled={passwordVal === "" || passwordVal.length < 6 || !isValid || profileIsPending || updateProfileIsLoading}
+              disabled={passwordVal === "" || passwordVal.length < 6 || !isValid || profileIsLoading || updateProfileIsLoading}
               className='bg-[#025750] text-white font-bold text-lg py-4 w-full rounded-lg my-6 disabled:opacity-70 disabled:cursor-not-allowed'
             >
               Update 

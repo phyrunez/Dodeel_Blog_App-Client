@@ -71,9 +71,9 @@ const Header = () => {
                         return <NavItem key={item.name} item={item} />
                     })}
                 </ul>
-                {console.log(userState.userInfo)}
+                {/* {console.log(userState.userInfo)} */}
                 {userState.userInfo ? (
-                    
+
                     <div className='text-white items-center gap-y-5 lg:text-dark-soft flex flex-col lg:flex-row gap-x-8 font-semibold'>
                         <div className="relative group">
                             <div className='flex flex-col items-center'>
@@ -83,13 +83,15 @@ const Header = () => {
                                 </button>
                                 <div className={`${profileDropdown ? 'block' : 'hidden' } lg:hidden transition-all duration-500 pt-4 lg:absolute lg:bottom-0 lg:right-0 lg:transform lg:translate-y-full lg:group-hover:block w-max`}>
                                     <ul className="bg-dark-soft lg:bg-transparent text-center flex flex-col shadow-lg rounded-lg overflow-hidden">
-                                        <button 
-                                            onClick={ () => navigate("/add-post") }
-                                            type='button'
-                                            className='hover:bg-dark-hard hover:text-white px-4 py-2 text-white lg:text-dark-soft'
-                                        >
-                                            Add New Post
-                                        </button>
+                                        {userState?.userInfo?.admin && (
+                                            <button 
+                                                onClick={ () => navigate("/admin") }
+                                                type='button'
+                                                className='hover:bg-dark-hard hover:text-white px-4 py-2 text-white lg:text-dark-soft'
+                                            >
+                                                Dashboard
+                                            </button>
+                                        )}
                                         <button 
                                             onClick={ () => navigate("/profile") }
                                             type='button'

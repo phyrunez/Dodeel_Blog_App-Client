@@ -2,7 +2,7 @@ import { images } from "../../../constants"
 
 const AllblogPost = () => {
   return (
-    <div class="container mx-auto w-[77%] grid grid-cols-3 my-20 gap-4">
+    <div className="container mx-auto w-[77%] grid grid-cols-3 my-20 gap-4">
         <div className="card card-compact w-96">
             <figure>
                 <img src={images.firstBlog} alt="Shoes" />
