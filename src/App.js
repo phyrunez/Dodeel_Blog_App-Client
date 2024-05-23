@@ -7,6 +7,7 @@ import SigninPage from './pages/signin/SigninPage'
 import AboutUsPage from './pages/about/AboutUsPage'
 import ContactUsPage from './pages/contactUs/ContactUsPage'
 import SignUpPage from './pages/signin/SignUpPage';
+import PostDetailPage from "./pages/postDetail/PostDetailPage"
 import NotFoundPage from './pages/not-found/NotFoundPage';
 import AddNewPost from './pages/admin/screens/new-post/AddNewPost'
 import Admin from "./pages/admin/screens/Admin"
@@ -20,6 +21,7 @@ function App() {
       <Routes>
         <Route index path='/' element={<HomePage />} />
         <Route path='/profile' element={<ProfilePage />} />
+        <Route path='/blog/:slug' element={<PostDetailPage />} />
         <Route path='/login' element={<SigninPage />} />
         <Route path='/register' element={<SignUpPage />} />
         <Route path='/admin' element={<AdminLayout />}>

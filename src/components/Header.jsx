@@ -48,7 +48,7 @@ const Header = () => {
     <section className="sticky top-0 right-0 left-0 z-50 bg-white">
         <header className="container mx-auto w-10/12 px-12 flex justify-between py-4 items-center">
             <Link to='/'>
-                <img className="w-16" src={images.Logo} alt="Dodeel Logo" />
+                <img className="w-20" src={images.Logo} alt="Dodeel Logo" />
             </Link>
             <div className="lg:hidden z-50">
                 { navIsVisible ? (
@@ -82,7 +82,7 @@ const Header = () => {
                                     <MdOutlineKeyboardArrowDown />
                                 </button>
                                 <div className={`${profileDropdown ? 'block' : 'hidden' } lg:hidden transition-all duration-500 pt-4 lg:absolute lg:bottom-0 lg:right-0 lg:transform lg:translate-y-full lg:group-hover:block w-max`}>
-                                    <ul className="bg-dark-soft lg:bg-transparent text-center flex flex-col shadow-lg rounded-lg overflow-hidden">
+                                    <ul className="bg-[#929E9B] text-center flex flex-col shadow-lg rounded-lg overflow-hidden">
                                         {userState?.userInfo?.admin && (
                                             <button 
                                                 onClick={ () => navigate("/admin") }

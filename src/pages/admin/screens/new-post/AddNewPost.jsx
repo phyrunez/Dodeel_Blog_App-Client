@@ -31,7 +31,7 @@ const AddNewPost = () => {
     onSuccess: (data) => {
         dispatch(postActions.setPostDetails(data))
         toast.success("Successfully added Post")
-        navigate("/")
+        // navigate("/")
     },
     onError: (error) => {
         console.log(error)
@@ -51,9 +51,9 @@ const AddNewPost = () => {
     })
   }
 
-  useEffect(() => {
-    if(postState.postDetails) navigate("/")
-  }, [navigate, postState.postDetails])
+  // useEffect(() => {
+  //   if(!postState.postDetails) navigate("/")
+  // }, [navigate, postState.postDetails])
 
   return (
     <>

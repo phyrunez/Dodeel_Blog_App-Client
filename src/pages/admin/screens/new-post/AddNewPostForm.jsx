@@ -1,4 +1,5 @@
 import { useForm } from 'react-hook-form'
+import Spinner from "../../../../components/Spinner"
 
 const categories = [
     { id: 1, name: "All" },
@@ -194,6 +195,8 @@ const AddNewPostForm = ({ submitHandler, defaultInputValues, setDefaultInputValu
                 outline-none border ${errors.summaryText ? "border-red-500" : "border-[#c3cad9]"} ${defaultInputValues.summaryTextVal >= 5 && "border-green-500"}`} 
             />
         </div>
+
+        {isLoading && <Spinner />}
 
         <button 
             type='submit' 

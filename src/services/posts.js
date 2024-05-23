@@ -38,3 +38,15 @@ export const getSinglePost = async({ slug }) => {
         throw new Error(error.message)
     }
 }
+
+export const deleteSinglePost = async({ slug }) => {
+    try {
+        const { data } = await axios.delete(`/api/posts/${slug}`);
+        
+        return data;
+    } catch (error) {
+        console.log(error)
+        if(error.response && error.response.data.message) throw new Error(error.response.data.message);
+        throw new Error(error.message);
+    }
+}

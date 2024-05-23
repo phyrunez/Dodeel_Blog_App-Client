@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 import { images } from "../../../../constants"
-import { AiFillDashboard, AiOutlineClose, AiOutlineMenu } from "react-icons/ai"
+import { AiFillDashboard, AiFillHome, AiOutlineClose, AiOutlineMenu } from "react-icons/ai"
 import { useWindowSize } from "@uidotdev/usehooks"
 import { FaComments } from "react-icons/fa"
 import { MdDashboard } from "react-icons/md"
@@ -10,6 +10,13 @@ import NavItemCollapse from "./NavItemCollapse"
 
 
 const MENU_ITEMS = [
+    {
+        title: "Home",
+        link: "/",
+        icon: <AiFillHome className="text-xl" />,
+        name: "home",
+        type: "link"
+    },
     {
         title: "Dashboard",
         link: "/admin",
@@ -25,14 +32,11 @@ const MENU_ITEMS = [
         type: "link"
     },
     {
-        title: "Posts",
-        content: [
-            { title: "New", link: "/admin/posts/add-post" },
-            { title: "Manage", link: "/admin/posts/manage" }
-        ],
+        title: "Add Posts",
+        link: "/admin/posts/add-post" ,
         icon: <MdDashboard className="text-xl" />,
         name: "posts",
-        type: "collapse"
+        type: "link"
     }
 ]
 
@@ -88,7 +92,7 @@ const Header = () => {
                         <h4 className="mt-10 font-bold text-[#C7C7C7]">MAIN MENU</h4>
                         {/* menu items */}
                         <div className="mt-6 flex flex-col gap-y-[0.563rem]">
-                            { MENU_ITEMS.map(item => item.type === "link" ? 
+                            { MENU_ITEMS.map(item => item.type === "link" && 
                                 <NavItem
                                   key={item.title}
                                   link={item.link}
@@ -97,16 +101,7 @@ const Header = () => {
                                   name={item.name}
                                   activeNavName={activeNavName}
                                   setActiveNavName={setActiveNavName}
-                                /> : 
-                                <NavItemCollapse
-                                  key={item.name}
-                                  content={item.content}
-                                  title={item.title}
-                                  icon={item.icon}
-                                  name={item.name}
-                                  activeNavName={activeNavName}
-                                  setActiveNavName={setActiveNavName}
-                                /> 
+                                />  
                             )}
                         </div>
                     </div>

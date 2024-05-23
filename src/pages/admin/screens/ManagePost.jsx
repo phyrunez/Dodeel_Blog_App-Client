@@ -1,11 +1,11 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useEffect, useState } from 'react'
-import { getAllPosts } from '../../../services/posts';
+import { deleteSinglePost, getAllPosts } from '../../../services/posts';
 import { images, stables } from '../../../constants';
 import Spinner from '../../../components/Spinner';
+import { Link } from 'react-router-dom';
+import { AiFillDelete } from 'react-icons/ai';
 // import Pagination from '../../../components/Pagination';
-
-let isFirstRun = true
 
 const ManagePost = () => {
 
@@ -20,7 +20,6 @@ const ManagePost = () => {
   console.log(postData)
 
   useEffect(() => {
-    
     refetch()
   }, [refetch, currentPage])
 
@@ -31,9 +30,16 @@ const ManagePost = () => {
     if(!value) refetch()
   }
 
+  const deleteHandler = (slug) => {
+    console.log(slug)
+    deleteSinglePost({slug})
+    refetch()
+  }
+
   const submitSearchKeywordHandler = (e) => {
     e.preventDefault()
     // setCurrentPage(1)
+    // setSearchKeyword()
     refetch()
   }
 
@@ -83,6 +89,8 @@ const ManagePost = () => {
                                   </th>
                                   <th scope="col" className="px-5 py-3 text-sm font-normal text-left text-gray-800 uppercase bg-white border-b border-gray-200">
                                   </th>
+                                  <th scope="col" className="px-5 py-3 text-sm font-normal text-left text-gray-800 uppercase bg-white border-b border-gray-200">
+                                  </th>
                               </tr>
                           </thead>
                           <tbody>
@@ -99,28 +107,30 @@ const ManagePost = () => {
                                 </td>
                             </tr> : (
                               postData?.data?.map((post) => (
-                                <tr>
+                                <tr key={post?._id}>
                                   <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
                                       <div className="flex items-center">
                                           <div className="flex-shrink-0">
                                               <a href="/" className="relative block">
                                                   <img 
                                                     alt={post.title} 
-                                                    src={post?.image ? stables.UPLOAD_FOLDER_BASE_URL + post?.image : images.defaultBg} 
+                                                    src={post?.mainPhoto ? post?.mainPhoto : images.defaultBg} 
                                                     className="mx-auto object-cover rounded-lg w-10 aspect-square"
                                                   />
                                               </a>
                                           </div>
                                           <div className="ml-3">
-                                              <p className="text-gray-900 whitespace-no-wrap">
+                                              <Link to={`/blog/${post.slug}`}>
+                                                <p className="text-gray-900 cursor-pointer whitespace-no-wrap">
                                                   { post.title }
-                                              </p>
+                                                </p>
+                                              </Link>
                                           </div>
                                       </div>
                                   </td>
                                   <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
                                       <p className="text-gray-900 whitespace-no-wrap">
-                                          {post.categories.length > 0 ? post.categories[0] : "Uncategorized"}
+                                          {post.category ? post.category : "Uncategorized"}
                                       </p>
                                   </td>
                                   <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
@@ -137,12 +147,14 @@ const ManagePost = () => {
                                   </td>
                                   <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
                                       <div className="flex gap-x-2">
-                                        {post.tags.length > 0 ? post.tags.map((tag, index) => (
-                                          <p>
-                                            {tag}{ post.tags.length - 1 !== index && "," }
-                                          </p>
-                                        )) : "No Tags"}
+                                        {post.author ? post.author : "Do Deel"}
                                       </div>
+                                  </td>
+                                  <td className="px-5 py-5 text-sm bg-white border-b border-gray-200" onClick={() => deleteHandler(post.slug)}>
+                                      {/* <a href="/" className="text-indigo-600 hover:text-indigo-900">
+                                          Edit
+                                      </a> */}
+                                      <AiFillDelete className='text-red-500 cursor-pointer' />
                                   </td>
                                   <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
                                       <a href="/" className="text-indigo-600 hover:text-indigo-900">

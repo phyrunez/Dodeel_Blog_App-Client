@@ -47,7 +47,7 @@ const Footer = () => {
         </section>
         <div className="mt-7">
             <div className="flex flex-col">
-                <img src={images.Logo} className="mx-auto" alt="Dodeel Logo" />
+                <img src={images.Logo} className=" w-16 mx-auto" alt="Dodeel Logo" />
                 <div className='lg:mt-2 mx-auto max-w-sm lg:text-center gap-x-3 items-center'>
                 <ul className=' text-[#333333] text-center text-sm font-montserrat gap-y-5 flex lg:flex-row cursor-pointer gap-x-3 font-xs'>
                     {footerNav.map(item => {
