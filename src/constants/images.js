@@ -19,6 +19,10 @@ import Polygon from "../assets/Polygon 4.svg"
 import Rectangle from "../assets/Rectangle 1438.svg"
 import Union from "../assets/Union.svg"
 import Vector_2 from "../assets/Vector (5).svg"
+import Group1 from "../assets/Group 1000001629.svg"
+import Mail from "../assets/Mail.svg"
+import Phone from "../assets/Phone.svg"
+import Office from "../assets/Office.png"
 
 const images = {
     Logo,
@@ -41,7 +45,11 @@ const images = {
     Polygon,
     Rectangle,
     Union,
-    Vector_2
+    Vector_2,
+    Group1,
+    Mail,
+    Phone,
+    Office
 }
 
 export default images
