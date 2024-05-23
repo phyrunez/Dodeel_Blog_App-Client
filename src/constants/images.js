@@ -12,6 +12,10 @@ import popularPost_1 from "../assets/Container (2).svg"
 import popularPost_2 from "../assets/Container (3).svg"
 import popularPost_3 from "../assets/Container (4).svg"
 import Ellipse_Img from "../assets/Ellipse 153 (1).png"
+import Group1 from "../assets/Group 1000001629.svg"
+import Mail from "../assets/Mail.svg"
+import Phone from "../assets/Phone.svg"
+import Office from "../assets/Office.png"
 
 const images = {
     Logo,
@@ -27,7 +31,11 @@ const images = {
     thirdBlog,
     popularPost_1,
     popularPost_2,
-    popularPost_3
+    popularPost_3,
+    Group1,
+    Mail,
+    Phone,
+    Office
 }
 
 export default images
