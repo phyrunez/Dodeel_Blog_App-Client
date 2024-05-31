@@ -1,48 +1,21 @@
-import { useQuery } from '@tanstack/react-query';
-import React, { useEffect, useState } from 'react'
-import { deleteSinglePost, getAllPosts } from '../../../services/posts';
 import { images, stables } from '../../../constants';
 import Spinner from '../../../components/Spinner';
 import { Link } from 'react-router-dom';
 import { AiFillDelete } from 'react-icons/ai';
 // import Pagination from '../../../components/Pagination';
 
-const ManagePost = () => {
-
-  const [searchKeyword, setSearchKeyword] = useState("")
-  const [currentPage, setCurrentPage] = useState(1)
+const ManagePost = ({
+  postData,
+  isLoading,
+  isFetching,
+  searchKeyword,
+  searchKeywordHandler,
+  submitSearchKeywordHandler,
+  deleteHandler,
+  changeStateHandler,
+  setSearchKeyword
+}) => {
   
-  const { data: postData, isLoading, isFetching, refetch } = useQuery({
-    queryFn: () => getAllPosts(searchKeyword, currentPage),
-    queryKey: ["posts"],
-  })
-
-  console.log(postData)
-
-  useEffect(() => {
-    refetch()
-  }, [refetch, currentPage])
-
-  const searchKeywordHandler = (e) => {
-    const { value } = e.target
-    setSearchKeyword(value)
-
-    if(!value) refetch()
-  }
-
-  const deleteHandler = (slug) => {
-    console.log(slug)
-    deleteSinglePost({slug})
-    refetch()
-  }
-
-  const submitSearchKeywordHandler = (e) => {
-    e.preventDefault()
-    // setCurrentPage(1)
-    // setSearchKeyword()
-    refetch()
-  }
-
   return (
     <div className='font font-montserrat'>
       <h1 className="text-2xl font-semibold">Manage Posts</h1>
@@ -151,28 +124,20 @@ const ManagePost = () => {
                                       </div>
                                   </td>
                                   <td className="px-5 py-5 text-sm bg-white border-b border-gray-200" onClick={() => deleteHandler(post.slug)}>
-                                      {/* <a href="/" className="text-indigo-600 hover:text-indigo-900">
-                                          Edit
-                                      </a> */}
+  
                                       <AiFillDelete className='text-red-500 cursor-pointer' />
                                   </td>
-                                  <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
-                                      <a href="/" className="text-indigo-600 hover:text-indigo-900">
+                                  <td className="px-5 py-5 text-sm bg-white border-b border-gray-200" onClick={() => changeStateHandler(post.slug)}>
+                                      <Link className="text-indigo-600 hover:text-indigo-900">
                                           Edit
-                                      </a>
+                                      </Link>
                                   </td>
                                 </tr>
                               ))
                             )}
                           </tbody>
                       </table>
-                      {/* {!isLoading && 
-                        <Pagination 
-                          onPageChange={page => setCurrentPage(page)} 
-                          currentPage={currentPage}
-                          totalPageCount={postData?.headers["x-totalPageCount"]}
-                        /> 
-                      } */}
+                      
                   </div>
               </div>
           </div>

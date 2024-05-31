@@ -30,6 +30,17 @@ export const signin = async ({ email, password }) => {
     }
 }
 
+export const getAllUsers = async() => {
+    try {
+        const  { data } = await axios.get(`/api/users/`)
+        
+        return { data }
+    } catch (error) {
+        if(error.response && error.response.data.response) throw new Error(error.response.data.message)
+        throw new Error(error.message)    
+    }
+}
+
 export const getUserProfile = async({ token }) => {
     try {
         const config = {
@@ -63,7 +74,7 @@ export const updateProfile = async({ token, userData }) => {
     }
 }
 
-export const updateProfilePicture = async({ token, formData }) => {
+export const updateProfilePicture = async({ userId, token, formData }) => {
     try {
         const config = {
             headers: {
@@ -72,7 +83,7 @@ export const updateProfilePicture = async({ token, formData }) => {
             }
         }
 
-        const { data } = await axios.put('api/users/updateUserProfilePicture', formData, config);
+        const { data } = await axios.put(`api/users/updateUserProfilePicture/${userId}`, formData, config);
         console.log(data)
         return data;
     } catch (error) {

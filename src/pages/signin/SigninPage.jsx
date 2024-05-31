@@ -7,10 +7,13 @@ import { useDispatch } from "react-redux"
 import { signin } from "../../services/users.js"
 import { userActions } from "../../store/reducers/userReducer"
 import toast from "react-hot-toast"
+import { FaEye, FaEyeSlash } from "react-icons/fa"
 
 const SigninPage = () => {
   const [emailVal, setEmailVal] = useState('')
   const [passwordVal, setPasswordVal] = useState('')
+  const [loadingState, setLoadingState] = useState(false)
+  const [showPassword, setShowPassword] = useState(false)
 
   const dispatch = useDispatch()
   const navigate = useNavigate()
@@ -26,9 +29,9 @@ const SigninPage = () => {
       toast.success("welcome back to DODEEL Blog App")
       navigate("/")
     },
-    onError: (error) => {
-      toast.error(error.message)
-      console.log(error.message)
+    onError: (error) => {   
+      toast.error("Invalid Email or Password, Please try again!")
+      console.log(error)
     }
   })
 
@@ -43,8 +46,12 @@ const SigninPage = () => {
   const submitHandler = (data) => {
     const { email, password } = data
     mutate({ email, password })
+    setLoadingState(prev => !prev)
   }
 
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword)
+  }
 
   return (
     <MainLayout>
@@ -79,18 +86,23 @@ const SigninPage = () => {
 
             <div className="flex flex-col mb-6 w-full">
               <label htmlFor="password" className="text-[#333333] font-semibold block">Password</label>
-              <input 
-                type="password"  
-                id="password" 
-                {...register('password', {
-                  minLength: { value: 6, message: "password length must be atleast 6 characters long!" },
-                  required: { value: true, message: "Email address field is required!" }
-                })}
-                onChange={e => setPasswordVal(e.target.value)}
-                placeholder='Enter Password'
-                className={`placeholder:text-[#c4c4c4] text-[#c4c4c4] mt-3 rounded-lg px-5 py-4 font-semibold block
-                outline-none border ${errors.password ? "border-red-500" : "border-[#c3cad9]"} ${passwordVal.length >= 6 && "border-green-500"}`}
-              />
+              <div className="flex flex-row relative border w-full rounded-lg mt-3">
+                <input 
+                  type={showPassword ? "text" : "password"}  
+                  id="password" 
+                  {...register('password', {
+                    minLength: { value: 6, message: "password length must be atleast 6 characters long!" },
+                    required: { value: true, message: "Email address field is required!" }
+                  })}
+                  onChange={e => setPasswordVal(e.target.value)}
+                  placeholder='Enter Password'
+                  className={`placeholder:text-[#c4c4c4] text-[#c4c4c4] rounded-lg px-5 py-4 font-semibold block w-full
+                  outline-none border ${errors.password ? "border-red-500" : "border-[#c3cad9]"} ${passwordVal.length >= 6 && "border-green-500"}`}
+                />
+                <span onClick={togglePasswordVisibility} className="absolute right-5 bottom-5 cursor-pointer">
+                  {!showPassword ? <FaEyeSlash /> : <FaEye />}
+                </span>
+              </div>
 
               {errors.password?.message && (
                 <p className="text-red-500 text-xs mt-1">{ errors.password?.message }</p>
@@ -102,10 +114,10 @@ const SigninPage = () => {
             </Link>
             <button 
               type='submit' 
-              disabled={!isValid || isLoading}
+              // disabled={!isValid || isLoading}
               className='bg-[#025750] text-white font-bold text-lg py-4 w-full rounded-lg my-6 disabled:opacity-70 disabled:cursor-not-allowed'
             >
-              Signin
+              {!loadingState ? "Signin" : "Getting In..."}
             </button>
             <p className="text-sm text-center font-semibold text-[#5a7184]">
               Create an account? <Link to="/register" className='text-primary'>Register now</Link>

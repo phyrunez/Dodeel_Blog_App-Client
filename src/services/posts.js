@@ -50,3 +50,15 @@ export const deleteSinglePost = async({ slug }) => {
         throw new Error(error.message);
     }
 }
+
+export const updatePost = async({ slug, userData }) => {
+    try {
+        const { data } = await axios.put(`/api/posts/${slug}`, userData);
+        
+        return data;
+    } catch (error) {
+        console.log(error)
+        if(error.response && error.response.data.message) throw new Error(error.response.data.message);
+        throw new Error(error.message);
+    }
+}

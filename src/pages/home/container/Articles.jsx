@@ -1,9 +1,12 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import ArticlesNav from "./ArticlesNav"
 import SearchArticles from "./SearchArticles"
 import LatestRelease from "./LatestRelease"
 import AllBlogPost from "./AllblogPost"
 import PopularPost from "./PopularPost"
+import { useQuery } from "@tanstack/react-query"
+import { getAllPosts } from "../../../services/posts"
+import Spinner from "../../../components/Spinner"
 
 const blogCategories = [
     { id: 1, name: 'All' },
@@ -14,14 +17,21 @@ const blogCategories = [
 ]
 
 const Articles = () => {
-  // let defaultState = {
-  //   selectedBlogId: undefined,
-  //   blogs: []
-  // }
-
-  // const [blogState, setBlogState] = useState(defaultState)
+  
   const [ activeNavName, setActiveNavName ] = useState("All")
-  // const [ isMenuActive, setIsMenuActive ] = useState(false)
+  const [searchKeyword, setSearchKeyword] = useState("")
+  const [currentPage, setCurrentPage] = useState(1)
+  
+  const { data: postsData, isLoading: postsIsLoading, refetch } = useQuery({
+    queryKey: ["posts", searchKeyword],
+    queryFn: () => getAllPosts(searchKeyword, currentPage)
+  })
+
+  useEffect(() => {
+    refetch()
+  }, [])
+
+  console.log(postsData)
 
   return (
     <>
@@ -40,8 +50,12 @@ const Articles = () => {
           })}
         </div>
       </div>
-      <LatestRelease />
-      <AllBlogPost />
+      {postsIsLoading ? <Spinner /> : (
+        <>
+          <LatestRelease latestData={postsData} />
+          <AllBlogPost allData={postsData} />
+        </>
+      )}
       <PopularPost />
     </>
     

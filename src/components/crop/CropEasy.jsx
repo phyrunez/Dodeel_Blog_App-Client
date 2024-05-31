@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import Cropper from "react-easy-crop"
-import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import getCroppedImg from './cropImage';
 import { updateProfilePicture } from '../../services/users';
 import { useDispatch, useSelector } from 'react-redux';
@@ -20,9 +20,12 @@ const CropEasy = ({ photo, setOpenCrop }) => {
     setCroppedAreaPixels(croppedAreaPixels)
   }
 
+  const [profileData, setProfileData] = useState(userState.userInfo)
+
   const { mutate, isLoading } = useMutation({
-    mutationFn: ({ token, formData }) => {
+    mutationFn: ({ userId, token, formData }) => {
         return updateProfilePicture({
+            userId,
             token: token,
             formData: formData
         })
@@ -50,7 +53,7 @@ const CropEasy = ({ photo, setOpenCrop }) => {
         const formData = new FormData()
         formData.append("profilePicture", file)
 
-        mutate({ token: userState.userInfo.token, formData: formData })
+        mutate({ userId: userState.userInfo._id, token: userState.userInfo.token, formData: formData })
     } catch (error) {
         toast.error(error.message)
     }

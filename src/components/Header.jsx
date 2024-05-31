@@ -36,6 +36,7 @@ const Header = () => {
 
   const logoutHandler = () => {
     dispatch(logout())
+    navigate("/")
   }
 
   const navVisibilityHandler = () => {
@@ -57,15 +58,16 @@ const Header = () => {
                         onClick={navVisibilityHandler}
                     />
                 ): (
-                    <AiOutlineMenuUnfold 
-                        className="w-6 h-6 cursor-pointer"
-                        onClick={navVisibilityHandler}
-                    />
+                    // <AiOutlineMenuUnfold 
+                    //     className="w-6 h-6 cursor-pointer"
+                    //     onClick={navVisibilityHandler}
+                    // />
+                    <img src={images.Menu} className="w-8 h-8 cursor-pointer" onClick={navVisibilityHandler} alt="menu-icon" />
                 )}
             </div>
             <div className={`${
                 navIsVisible ? "right-0" : "-right-full"
-            } transition-all duration-300 mt-[65px] lg:mt-0 bg-[#929E9B] lg:bg-transparent z-[49] flex flex-col w-full lg:w-auto justify-center lg:justify-end lg:flex-row fixed top-0 bottom-0 lg:static gap-x-9 items-center`}>
+            } transition-all duration-300 mt-[85px] lg:mt-0 bg-[#929E9B] lg:bg-transparent z-[49] flex flex-col w-full lg:w-auto justify-center lg:justify-end lg:flex-row fixed top-0 bottom-0 lg:static gap-x-9 items-center`}>
                 <ul className="text-white items-center gap-y-5 lg:text-dark-soft flex flex-col lg:flex-row gap-x-8 font-semibold">
                     {navItemInfo.map(item => {
                         return <NavItem key={item.name} item={item} />
@@ -77,9 +79,9 @@ const Header = () => {
                     <div className='text-white items-center gap-y-5 lg:text-dark-soft flex flex-col lg:flex-row gap-x-8 font-semibold'>
                         <div className="relative group">
                             <div className='flex flex-col items-center'>
-                                <button className='flex gap-x-1 items-center mt-5 lg:mt-0 border-2 border-[#025750] rounded-md bg-[#025750] px-5 py-1 text-white font-semibold hover:bg-white hover:text-[#025750] transition-all duration-300' onClick={() => setProfileDropdown(!profileDropdown)}>
-                                    <span>Account</span>
-                                    <MdOutlineKeyboardArrowDown />
+                                <button className='flex gap-x-1 items-center mt-5 lg:mt-0 border-2 border-[#025750] text-white rounded-md bg-[#025750] px-5 py-1 text-whte font-semibold transition-all duration-300' onClick={() => setProfileDropdown(!profileDropdown)}>
+                                    <span className="text-white ">Account</span>
+                                    <MdOutlineKeyboardArrowDown className="text-white" />
                                 </button>
                                 <div className={`${profileDropdown ? 'block' : 'hidden' } lg:hidden transition-all duration-500 pt-4 lg:absolute lg:bottom-0 lg:right-0 lg:transform lg:translate-y-full lg:group-hover:block w-max`}>
                                     <ul className="bg-[#929E9B] text-center flex flex-col shadow-lg rounded-lg overflow-hidden">

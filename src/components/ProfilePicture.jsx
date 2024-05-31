@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import CropEasy from './crop/CropEasy'
 import { stables } from '../constants'
 import { HiOutlineCamera } from "react-icons/hi"
@@ -23,9 +23,14 @@ const ProfilePicture = ({ avatar }) => {
     setOpenCrop(true)
   }
 
+//   useEffect(() => {
+//     const check 
+//   }, [])
+
   const { mutate, isLoading } = useMutation({
-    mutationFn: ({ token, formData }) => {
+    mutationFn: ({ userId, token, formData }) => {
         return updateProfilePicture({
+            userId,
             token: token,
             formData: formData
          })
@@ -49,7 +54,9 @@ const ProfilePicture = ({ avatar }) => {
             const formData = new FormData()
             formData.append("profilePicture", undefined)
 
-            mutate({ token: userState.userInfo.token, formData: formData })
+            console.log(formData)
+
+            mutate({ userId: userState.userInfo._id, token: userState.userInfo.token, formData: formData })
         } catch (error) {
             toast.error(error.message)
         }
@@ -64,9 +71,9 @@ const ProfilePicture = ({ avatar }) => {
             <div className='relative w-20 h-20 rounded-full  outline outline-offset-2 outline-1 outline-[#025750] overflow-hidden'>
                 <label htmlFor="profilePicture" className='cursor-pointer absolute inset-0 rounded-full bg-transparent'>
                     {console.log(avatar)}
-                    {avatar ? (
+                    {userState.userInfo?.avatar ? (
                         <img 
-                            src={stables.UPLOAD_FOLDER_BASE_URL + avatar} 
+                            src={stables.UPLOAD_FOLDER_BASE_URL + userState.userInfo?.avatar} 
                             alt="avatar" 
                             className='w-full h-full object-cover' 
                         />

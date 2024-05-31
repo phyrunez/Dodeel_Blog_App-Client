@@ -7,18 +7,21 @@ import toast from "react-hot-toast"
 import { useDispatch, useSelector } from 'react-redux'
 import { signup } from "../../services/users.js"
 import { userActions } from '../../store/reducers/userReducer.js';
+import { FaEye, FaEyeSlash } from 'react-icons/fa'
 
 const SignUpPage = () => {
   const [ nameVal, setNameVal ] = useState("");
   const [ emailVal, setEmailVal ] = useState("");
   const [ passwordVal, setPasswordVal ] = useState("");
   const [ confirmPassVal, setConfirmPassVal ] = useState("");
+  const [loadingState, setLoadingState] = useState(false)
+  const [showPassword, setShowPassword] = useState(false)
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const userState = useSelector(state => state.user)
 
-  const { mutate, isLoading } = useMutation({
+  const { mutate } = useMutation({
     mutationFn: ({ name, email, password }) => {
         return signup({ name, email, password })
     },
@@ -46,7 +49,12 @@ const SignUpPage = () => {
   const submitHandler = (data) => { 
     const { name, email, password } = data;
     mutate({ name, email, password });
+    setLoadingState(prev => !prev)
    }
+
+   const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword)
+  }
 
    useEffect(() => {
     if(userState.userInfo) navigate("/");
@@ -106,17 +114,24 @@ const SignUpPage = () => {
 
                     <div className="flex flex-col mb-6 w-full">
                         <label htmlFor="password" className='text-[#5a7184] font-semibold block'>Password</label>
-                        <input 
-                        type="password" 
-                        id="password" 
-                        {...register("password", {
-                            minLength: { value: 6, message: "password length must be atleast 6 character"},
-                            required: { value: true, message: "password field is required!"},
-                        })} 
-                        onChange={e => setPasswordVal(e.target.value)}
-                        placeholder="Enter Password"
-                        className={`placeholder:text-[#959ead] text-dark-hard mt-3 rounded-lg px-5 py-4 font-semibold block
-                        outline-none border ${errors.password ? "border-red-500" : "border-[#c3cad9]"} ${passwordVal.length >= 6 && "border-green-500"}`} />
+                        <div className="flex flex-row relative border w-full rounded-lg mt-3">
+                            <input 
+                                type={showPassword ? "text" : "password"}
+                                id="password" 
+                                {...register("password", {
+                                    minLength: { value: 6, message: "password length must be atleast 6 character"},
+                                    required: { value: true, message: "password field is required!"},
+                                })} 
+                                onChange={e => setPasswordVal(e.target.value)}
+                                placeholder="Enter Password"
+                                className={`placeholder:text-[#959ead] text-dark-hard w-full rounded-lg px-5 py-4 font-semibold block
+                                outline-none border ${errors.password ? "border-red-500" : "border-[#c3cad9]"} ${passwordVal.length >= 6 && "border-green-500"}`} 
+                            />
+
+                            <span onClick={togglePasswordVisibility} className="absolute right-5 bottom-5 cursor-pointer">
+                                {!showPassword ? <FaEyeSlash /> : <FaEye />}
+                            </span>
+                        </div>
 
                         {errors.password?.message && (
                             <p className='text-red-500 text-xs mt-1'>{ errors?.password.message }</p>
@@ -125,19 +140,26 @@ const SignUpPage = () => {
 
                     <div className="flex flex-col mb-6 w-full">
                         <label htmlFor="confirmPassword" className='text-[#5a7184] font-semibold block'>Confirm Password</label>
-                        <input 
-                        type="password" 
-                        id="confirmPassword" 
-                        {...register("confirmPassword", {
-                            required: { value: true, message: "confirm password field is required!"},
-                            validate: (value) => {
-                                if(value !== password) return "Passwords do not match";
-                            }
-                        })} 
-                        onChange={e => setConfirmPassVal(e.target.value)}
-                        placeholder="Enter Confirm Password"
-                        className={`placeholder:text-[#959ead] text-dark-hard mt-3 rounded-lg px-5 py-4 font-semibold block
-                        outline-none border ${errors.confirmPassword ? "border-red-500" : "border-[#c3cad9]"} ${confirmPassVal.length >= 6 && "border-green-500"}`} />
+                        <div className="flex flex-row relative border w-full rounded-lg mt-3">
+                            <input 
+                                type="password" 
+                                id="confirmPassword" 
+                                {...register("confirmPassword", {
+                                    required: { value: true, message: "confirm password field is required!"},
+                                    validate: (value) => {
+                                        if(value !== password) return "Passwords do not match";
+                                    }
+                                })} 
+                                onChange={e => setConfirmPassVal(e.target.value)}
+                                placeholder="Enter Confirm Password"
+                                className={`placeholder:text-[#959ead] text-dark-hard w-full rounded-lg px-5 py-4 font-semibold block
+                                outline-none border ${errors.confirmPassword ? "border-red-500" : "border-[#c3cad9]"} ${confirmPassVal.length >= 6 && "border-green-500"}`} 
+                            />
+
+                            <span onClick={togglePasswordVisibility} className="absolute right-5 bottom-5 cursor-pointer">
+                                {!showPassword ? <FaEyeSlash /> : <FaEye />}
+                            </span>
+                        </div>
 
                         {errors.confirmPassword?.message && (
                             <p className='text-red-500 text-xs mt-1'>{ errors?.confirmPassword.message }</p>
@@ -146,10 +168,10 @@ const SignUpPage = () => {
 
                     <button 
                         type='submit' 
-                        disabled={!isValid || isLoading}
-                        className='bg-primary text-white font-bold text-lg py-4 w-full rounded-lg my-6 disabled:opacity-70 disabled:cursor-not-allowed'
+                        // disabled={!isValid || isLoading}
+                        className='bg-[#025750] text-white font-bold text-lg py-4 w-full rounded-lg my-6 disabled:opacity-70 disabled:cursor-not-allowed'
                     >
-                        Register
+                        {!loadingState ? "Register" : "Processing..."}
                     </button>
                     <p className="text-sm text-center font-semibold text-[#5a7184]">
                         You have an account? <Link to="/login" className='text-primary'>Login now</Link>

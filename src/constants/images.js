@@ -23,6 +23,8 @@ import Group1 from "../assets/Group 1000001629.svg"
 import Mail from "../assets/Mail.svg"
 import Phone from "../assets/Phone.svg"
 import Office from "../assets/Office.png"
+import Schedule from "../assets/schedule.jpeg"
+import Menu from "../assets/Menu.png"
 
 const images = {
     Logo,
@@ -49,7 +51,9 @@ const images = {
     Group1,
     Mail,
     Phone,
-    Office
+    Office,
+    Schedule,
+    Menu
 }
 
 export default images

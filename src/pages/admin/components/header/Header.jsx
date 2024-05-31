@@ -2,7 +2,7 @@ import { Link } from "react-router-dom"
 import { images } from "../../../../constants"
 import { AiFillDashboard, AiFillHome, AiOutlineClose, AiOutlineMenu } from "react-icons/ai"
 import { useWindowSize } from "@uidotdev/usehooks"
-import { FaComments } from "react-icons/fa"
+import { FaComments, FaEnvelope } from "react-icons/fa"
 import { MdDashboard } from "react-icons/md"
 import { useEffect, useState } from "react"
 import NavItem from "./NavItem"
@@ -36,6 +36,13 @@ const MENU_ITEMS = [
         link: "/admin/posts/add-post" ,
         icon: <MdDashboard className="text-xl" />,
         name: "posts",
+        type: "link"
+    },
+    {
+        title: "Messages",
+        link: "/admin/messages" ,
+        icon: <FaEnvelope className="text-xl" />,
+        name: "messages",
         type: "link"
     }
 ]

@@ -72,7 +72,7 @@ const ProfilePage = () => {
   }
 
   useEffect(() => {
-    if(!userState.userInfo) navigate("/")
+    if(userState.userInfo === null) navigate("/")
   }, [navigate, userState.userInfo])
 
   return (
@@ -144,7 +144,7 @@ const ProfilePage = () => {
 
             <button 
               type='submit' 
-              disabled={passwordVal === "" || passwordVal.length < 6 || !isValid || profileIsLoading || updateProfileIsLoading}
+              disabled={profileIsLoading || updateProfileIsLoading}
               className='bg-[#025750] text-white font-bold text-lg py-4 w-full rounded-lg my-6 disabled:opacity-70 disabled:cursor-not-allowed'
             >
               Update 

@@ -28,7 +28,7 @@ const AdminLayout = () => {
   }
 
   return (
-    <div className="flex flex-col h-screen lg:flex-row">
+    <div className="flex flex-col h-full lg:flex-row">
         <Header />
         <main className="bg-[#f9f9f9] bg-cover h-full flex-1 p-4 lg:p-6">
             <Outlet />

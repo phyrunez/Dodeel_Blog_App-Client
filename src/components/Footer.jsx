@@ -1,5 +1,6 @@
+import { useRef } from "react"
 import { images } from "../constants"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 
 const footerNav = [
     { link: '/', name: 'Home' },
@@ -17,6 +18,16 @@ const NavItem = ({ item }) => {
 }
 
 const Footer = () => {
+  
+  const inputRef = useRef(null)
+  const navigate = useNavigate()
+
+  const handleEnteredEmail = () => {
+    if(inputRef.current.value !== "") {
+        navigate("/contact-us")
+    }
+  }
+
   return (
     <>
         <section className="bg-[rgb(2,87,80)] lg:py-[5rem] ">
@@ -32,10 +43,12 @@ const Footer = () => {
                         className='placeholder:font-ss font-ss text-[#c4c4c4] placeholder:text-[#c4c4c4] rounded-lg pl-4 pr-3 py-2 w-full xl:w-[60%] focus:outline-none shadow-[rgba(50,50,93,0.25)_0px_6px_12px_-2px,_rgba(0,0,0,0.3)_0px_3px_7px_-3px] md:py-2'
                         type="email" 
                         name='email'
+                        ref={inputRef}
                         placeholder="Your Email"
                     />
                     <button
                         className="mt-5 lg:mt-0 border border-white rounded-md bg-[#025750] px-3 py-1 text-white font-semibold hover:bg-white hover:text-[#025750] transition-all duration-300"
+                        onClick={handleEnteredEmail}
                     >
                         Get started
                     </button>
@@ -60,7 +73,9 @@ const Footer = () => {
             </div>
             <div className="text-[#333333] text-center text-sm font-montserrat mx-auto max-w-sm">
                 <div className="mt-8 mb-3 flex flex-row mx-auto justify-center max-w-sm gap-x-3 items-center">
-                    <img className="cursor-pointer" src={images.Instagram} alt="instagram" />
+                    <Link to="https://www.instagram.com/lagos_digital_onboarders">
+                        <img className="cursor-pointer" src={images.Instagram} alt="instagram" />
+                    </Link>
                     <img className="cursor-pointer" src={images.Twitter} alt="twitter" />
                     <img className="cursor-pointer" src={images.Youtube} alt="youtube" />
                     <img className="cursor-pointer" src={images.LinkedIn} alt="linkedin" />
