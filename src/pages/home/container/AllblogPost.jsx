@@ -6,16 +6,20 @@ import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 
 const AllblogPost = ({ allData }) => {
-  
-  console.log(allData)
-  let all = allData?.data.slice(1, 4)
-  console.log(all)
+  const [allPosts, setAllPosts] = useState([])
+
+  useEffect(() => {
+    console.log(allData)
+    let start = allData?.data.length - 4
+    setAllPosts(allData?.data.slice(start, start + 3))
+    console.log(allPosts)
+  }, [])
 
   return (
     <>
       
         <div class="container p-4 mx-auto w-[78.5%] flex flex-row gap-x-15 items-center lg:my-6 md:justify-between">
-        {all.map(data => ( 
+        {allPosts.map(data => ( 
             <div className ="card card-compact lg:w-[30%] md:w-[45%] xl:w-[30%]">
               <figure>
                   <img className="w-[100%] h-[15rem]" src={data?.mainPhoto} alt="Shoes" />
@@ -43,7 +47,7 @@ const AllblogPost = ({ allData }) => {
                     <Link to={`/blog/${data?.slug}`} className="text-[#003140] font-montserrat text-base underline">
                       Read More...
                     </Link>
-                      {/* <a href="/" className="text-[#003140] font-montserrat text-base underline">Read More...</a> */}
+                      
                   </div>
               </div>    
             </div>

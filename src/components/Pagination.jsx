@@ -1,3 +1,5 @@
+import { AiFillCaretLeft, AiFillCaretRight } from "react-icons/ai";
+
 const Pagination = ({ currentPage, totalPages, totalPageCount, onPageChange }) => {
     console.log(currentPage, totalPageCount)
     const getPaginationNumbers = () => {
@@ -16,14 +18,14 @@ const Pagination = ({ currentPage, totalPages, totalPageCount, onPageChange }) =
           disabled={currentPage === 1}
           className="px-4 py-2 mx-1 bg-gray-300 rounded disabled:opacity-50"
         >
-          Previous
+          <AiFillCaretLeft />
         </button>
         {getPaginationNumbers().map((number) => (
           <button
             key={number}
             onClick={() => onPageChange(number)}
             className={`px-4 py-2 mx-1 rounded ${
-              currentPage === number ? 'bg-blue-500 text-white' : 'bg-gray-300'
+              currentPage === number ? 'bg-[#025750] text-white' : 'bg-gray-300'
             }`}
           >
             {number}
@@ -34,7 +36,7 @@ const Pagination = ({ currentPage, totalPages, totalPageCount, onPageChange }) =
           disabled={currentPage === totalPageCount}
           className="px-4 py-2 mx-1 bg-gray-300 rounded disabled:opacity-50"
         >
-          Next
+          <AiFillCaretRight />
         </button>
       </div>
     );

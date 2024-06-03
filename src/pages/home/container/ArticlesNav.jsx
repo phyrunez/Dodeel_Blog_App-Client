@@ -1,4 +1,4 @@
-const ArticlesNav = ({ item, activeNavName, setActiveNavName }) => {
+const ArticlesNav = ({ item, activeNavName, setActiveNavName, setActiveState }) => {
 
   return (
     <>

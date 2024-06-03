@@ -14,7 +14,7 @@ const AboutUsPage = () => {
             We are a CDS group committed to mentoring and empowering members to identify and build a digital career path, while also fostering connections among youth,
             businesses, and host communities to actively engage in the digital economy
           </p>
-          <div className='flex flex-col space-y-4 mx-auto w-[70%] lg:w-[80%] md:w-[80%] lg:flex-row items-center justify-evenly my-[1rem] xl:mt-[6rem]'>
+          <div className='flex flex-col space-y-4 mx-auto w-[70%] lg:flex-row items-center justify-evenly my-[1rem] xl:mt-[6rem]'>
             <div className="flex flex-col lg:flex-row justify-between border bg-white shadow-md rounded-[1rem] max-h-[30rem]">
                 
                 <div className="w-full lg:justify-start px-2 lg:px-[50px]">
@@ -22,7 +22,7 @@ const AboutUsPage = () => {
                       <div className=''>
                         <h1 className='text-[#FFBF00] text-2xl'>Our Culture</h1>
 
-                        <div className='mt-[0.5rem] leading-10 lg:leading-8 md:leading-2'>
+                        <div className='mt-[0.5rem] leading-10'>
                           <p className='font font-poppins'>At Digital Onboarders CDS, our culture thrives on skill development, open communication, order, and a strong community spirit. We
                             honor and respect diverse perspectives, consistently pursue excellence, and encourage innovative thinking. Above all, we embrace a growth
                             mindset that propels us to overcome challenges and achieve continuous personal and collective growth.
@@ -31,7 +31,7 @@ const AboutUsPage = () => {
 
                       </div>
 
-                      <div className='mt-[3rem] md:hidden'>
+                      <div className='mt-[3rem] '>
                         <h1 className='text-[#FFBF00] text-md'>CDS Schedule Officer</h1>
                         <p><i>Mrs. Folakemi Obadina</i></p>
                       </div>

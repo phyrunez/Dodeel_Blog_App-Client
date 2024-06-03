@@ -7,6 +7,7 @@ import EditPostForm from "./new-post/EditPostForm";
 import Pagination from "../../../components/Pagination";
 import { getAllUsers } from "../../../services/users";
 import { getAllMessages } from "../../../services/contacts";
+import toast from "react-hot-toast";
 
 const Admin = () => {
 
@@ -55,6 +56,7 @@ const Admin = () => {
   const deleteHandler = (slug) => {
     console.log(slug)
     deleteSinglePost({slug})
+    toast.success("Post Deleted successfully!!!")
     refetch()
   }
 

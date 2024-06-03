@@ -3,25 +3,14 @@ import BreadCrumbs from '../../components/BreadCrumbs'
 import MainLayout from '../../components/MainLayout'
 import { images, stables } from '../../constants'
 import { Link, useParams } from 'react-router-dom'
-// import SuggestedPosts from './container/SuggestedPosts'
-// import CommentsContainer from '../../components/comments/CommentsContainer'
 import SocialShareButtons from '../../components/SocialShareButtons.jsx'
-import { useQuery } from '@tanstack/react-query'
-import { getAllPosts, getSinglePost } from '../../services/posts.js'
-// import { generateHTML } from '@tiptap/html'
-// import Bold from '@tiptap/extension-bold'
-// import Document from '@tiptap/extension-document'
-// import Paragraph from '@tiptap/extension-paragraph'
-// import Text from '@tiptap/extension-text'
-// import Italic from '@tiptap/extension-italic'
-// import parse from "html-react-parser"
-import PostDetailSkeleton from './components/PostDetailSkeleton'
+import { useQuery, useMutation } from '@tanstack/react-query'
+import { getAllPosts, getSinglePost, likePost, rankedPost } from '../../services/posts.js'
 import ErrorMessage from '../../components/ErrorMessage'
 import { useSelector } from 'react-redux'
 import toast from 'react-hot-toast'
 import PopularPost from '../home/container/PopularPost.jsx'
 import Spinner from '../../components/Spinner.jsx'
-
 
 const ArticleDetailPage = () => {
     const { slug } = useParams();
@@ -29,7 +18,7 @@ const ArticleDetailPage = () => {
     const [ breadCrumbsData, setBreadCrumbsData ] = useState([]);
     const [ body, setBody ] = useState(null)
     const [ clickedState, setClickedState] = useState(false)
-    const [ clickCounter, setClickedCounter ] = useState(0)
+    const [ postLikes, setPostLikes ] = useState()
 
     const { data, isError, isLoading } = useQuery({
         queryKey: ["blog", slug], 
@@ -46,6 +35,26 @@ const ArticleDetailPage = () => {
           console.log(error)
         }
     })
+
+    // const { data: rankedPosts } = useQuery({
+    //     queryKey: ["ranked"], 
+    //     queryFn: () => rankedPost(),                                                  
+    // })
+
+    const { mutate } = useMutation({
+        mutationFn: ({ slug }) => {
+          return likePost({ slug })
+        },
+        onSuccess: (data) => {
+          console.log(data)
+          setPostLikes(data?.likes)
+        
+        },
+        onError: (error) => {  
+          console.log(error)
+        }
+      })
+    
     
     useEffect(() => {
         if(!isLoading) {
@@ -55,6 +64,8 @@ const ArticleDetailPage = () => {
                 { name: `${data.title}`, link: `/blog/${data.slug}` }
             ])
         } 
+
+        console.log(postLikes)
 
         if(!isError) {
             console.log(data);
@@ -67,12 +78,10 @@ const ArticleDetailPage = () => {
 
     
 
-    const handleLike = () => {
-        console.log("WORKING")
-        setClickedCounter( state => state = state + 1)
-        setClickedState(true)
-        data.likes = clickCounter + 1
-        console.log(data.likes)
+    const handleLike = (data) => {
+        const { slug } = data
+        console.log(slug)
+        mutate({ slug })  
     }
 
   return (
@@ -136,7 +145,7 @@ const ArticleDetailPage = () => {
 
                             <div className="text-[#333333] text-center text-xs">
                                 <div className="mt-8 mb-3 flex flex-row gap-x-2">
-                                    <img className={`cursor-pointer h-4 w-4 ${clickedState ? 'border border-none bg-red-600 bg-contain': 'fill-transparent'}`} src={images.Vector_2} alt="instagram" onClick={handleLike} /><span>{clickCounter}</span>
+                                    <img className={`cursor-pointer h-4 w-4 ${clickedState ? 'border border-none bg-red-600 bg-contain': 'fill-transparent'}`} src={images.Vector_2} alt="instagram" onClick={() => handleLike(data)} /><span className="text-[#025750]">{postLikes}</span>
                                     <img className="cursor-pointer h-4 w-4" src={images.Union} alt="twitter" />
                                     <img className="cursor-pointer h-4 w-4" src={images.Polygon} alt="youtube" />
                                     <img className="cursor-pointer h-4 w-4" src={images.Rectangle} alt="linkedin" />

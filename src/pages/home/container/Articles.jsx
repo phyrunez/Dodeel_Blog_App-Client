@@ -7,6 +7,7 @@ import PopularPost from "./PopularPost"
 import { useQuery } from "@tanstack/react-query"
 import { getAllPosts } from "../../../services/posts"
 import Spinner from "../../../components/Spinner"
+import { Link } from "react-router-dom"
 
 const blogCategories = [
     { id: 1, name: 'All' },
@@ -21,17 +22,29 @@ const Articles = () => {
   const [ activeNavName, setActiveNavName ] = useState("All")
   const [searchKeyword, setSearchKeyword] = useState("")
   const [currentPage, setCurrentPage] = useState(1)
+  const [activeState, setActiveState] = useState(true)
   
   const { data: postsData, isLoading: postsIsLoading, refetch } = useQuery({
     queryKey: ["posts", searchKeyword],
     queryFn: () => getAllPosts(searchKeyword, currentPage)
   })
 
-  useEffect(() => {
-    refetch()
-  }, [])
+  // useEffect(() => {
+  //   let data = getAllPosts()
+  //   console.log(data)
+  // }, [])
 
   console.log(postsData)
+  console.log(activeNavName)
+  // if(activeNavName !== "All") {
+    // let data = postsData.data.filter(d => d.category === activeNavName)
+    // console.log(data)
+  // }
+
+  // if(activeNavName === "All") setActiveState(true)
+
+  let filteredCat = postsData?.data.filter(d => d.category === activeNavName)
+  console.log(filteredCat)
 
   return (
     <>
@@ -45,18 +58,60 @@ const Articles = () => {
                 item={item.name}
                 activeNavName={activeNavName}
                 setActiveNavName={setActiveNavName}
+                setActiveState={setActiveState}
               />
             )
           })}
         </div>
       </div>
-      {postsIsLoading ? <Spinner /> : (
-        <>
-          <LatestRelease latestData={postsData} />
-          <AllBlogPost allData={postsData} />
-        </>
+      {postsIsLoading && <Spinner />}
+
+      {activeNavName === "All" ? (
+          <>
+            <LatestRelease latestData={postsData} />
+            <AllBlogPost allData={postsData} />
+            <PopularPost />
+          </>
+        ) : (
+          <div class="container p-4 mx-auto w-[78.5%] flex flex-row gap-x-15 items-center lg:my-6 md:justify-between">
+            {filteredCat.map(data => (
+              <div className ="card card-compact lg:w-[30%] md:w-[45%] xl:w-[30%]">
+                <figure>
+                    <img className="w-[100%] h-[15rem]" src={data?.mainPhoto} alt="photo" />
+                </figure>
+                <div className="card-body -mx-4">
+                    <div  className="flex flex-row mt-5">
+                        <span className="bg-[#025750] text-white font-bold px-1 py-1 border rounded-md">{data?.category}</span>
+                        <p className="px-4 py-1 text-[#025750]">
+                          {new Date(data?.createdAt).toLocaleDateString(
+                            'en-US',
+                            {
+                              day: "numeric",
+                              month: "short",
+                              year: "numeric"
+                            }
+                          )}
+                        </p>
+                    </div>
+                    <h2 className="card-title text-[#333333] font-bold text-2xl">{data?.title}</h2>
+                    <div>
+                        <span className="py-5 text-[#025750] font-sm">{data?.author}</span>
+                        <p className="py-5 text-base">{data.introText.substring(0, 100)}...</p>
+                    </div>
+                    <div className="mt-[1rem]">
+                      <Link to={`/blog/${data?.slug}`} className="text-[#003140] font-montserrat text-base underline">
+                        Read More...
+                      </Link>
+                        
+                    </div>
+                </div>    
+              </div>
+            ))}
+          </div>
       )}
-      <PopularPost />
+
+     
+      
     </>
     
   )

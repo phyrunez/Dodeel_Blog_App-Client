@@ -1,11 +1,15 @@
+import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 
 const LatestRelease = ({ latestData }) => {
-
-  console.log(latestData)
-
-  let latest = latestData?.data[0]
-  console.log(latest)
+  const [latest, setLatest] = useState()
+  
+  useEffect(() => {
+    console.log(latestData)
+    // let start = latestData?.data.length - 4
+    setLatest(latestData?.data[latestData?.data.length - 1])
+    console.log(latest)
+  }, [])
 
   return (
     <div className="container mx-auto my-10 w-11/12 lg:w-[77%]">
@@ -31,7 +35,7 @@ const LatestRelease = ({ latestData }) => {
                         <div className="text-[#111111]">
                             <h2 className="text-4xl py-5 font-bold">{latest.title}</h2>
                             <span className="py-5">By {latest?.author}</span>
-                            <p className="py-5">{latest.introText.substring(0, 250)}...</p>
+                            <p className="py-5">{latest.introText.substring(0, 200)}...</p>
                         </div>
                     </div>
                     <div className="mt-[.5rem] pr-4 pb-2">

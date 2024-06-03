@@ -62,3 +62,27 @@ export const updatePost = async({ slug, userData }) => {
         throw new Error(error.message);
     }
 }
+
+export const likePost = async({ slug }) => {
+    try {
+        const { data } = await axios.post(`/api/posts/${slug}/like`);
+        console.log(slug)
+        return data;
+    } catch (error) {
+        console.log(error)
+        if(error.response && error.response.data.message) throw new Error(error.response.data.message);
+        throw new Error(error.message);
+    }
+}
+
+export const rankedPost = async() => {
+    try {
+        const { data } = await axios.get('/api/posts/ranked');
+        console.log(data)
+        return data;
+    } catch (error) {
+        console.log(error)
+        if(error.response && error.response.data.message) throw new Error(error.response.data.message);
+        throw new Error(error.message);
+    }
+}
