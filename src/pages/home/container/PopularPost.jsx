@@ -3,7 +3,7 @@ import { images } from "../../../constants"
 import BlogCard from "../../../components/BlogCard"
 import { useQuery } from "@tanstack/react-query"
 import { getAllPosts, rankedPost } from "../../../services/posts"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 
 const PopularPost = ({ popularData }) => {
