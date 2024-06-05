@@ -29,8 +29,8 @@ const Articles = () => {
     queryFn: () => getAllPosts(searchKeyword, currentPage)
   })
 
-  useEffect(() => {
-    let data = getAllPosts(searchKeyword, currentPage)
+  useEffect(async() => {
+    let data = await getAllPosts(searchKeyword, currentPage)
     console.log(data)
   }, [])
 
