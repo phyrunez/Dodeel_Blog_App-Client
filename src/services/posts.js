@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = 'https://dodeel-blog-app-server.onrender.com'
+const API_URL = process.env.REACT_APP_API_URL
 console.log(API_URL)
 
 export const addPost = async({ title, author, introText, supportText, italicText,
@@ -22,7 +22,7 @@ export const addPost = async({ title, author, introText, supportText, italicText
 
 export const getAllPosts = async(searchKeyword = "", page = 1, limit = 10) => {
     try {
-        const  { data, headers } = await axios.get(`${API_URL}/api/posts/?searchKeyword=${searchKeyword}&page=${page}&limit=${limit}`)
+        const  { data, headers } = await axios.get(`${API_URL}/posts/?searchKeyword=${searchKeyword}&page=${page}&limit=${limit}`)
         console.log({ data, headers })
         return { data, headers }
     } catch (error) {
