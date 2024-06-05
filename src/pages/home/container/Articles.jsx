@@ -29,10 +29,10 @@ const Articles = () => {
     queryFn: () => getAllPosts(searchKeyword, currentPage)
   })
 
-  // useEffect(() => {
-  //   let data = getAllPosts()
-  //   console.log(data)
-  // }, [])
+  useEffect(() => {
+    let data = getAllPosts()
+    console.log(data)
+  }, [])
 
   console.log(postsData)
   console.log(activeNavName)
