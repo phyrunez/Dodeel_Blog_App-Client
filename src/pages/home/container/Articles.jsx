@@ -29,10 +29,10 @@ const Articles = () => {
     queryFn: () => getAllPosts(searchKeyword, currentPage)
   })
 
-  useEffect(async() => {
-    let data = await getAllPosts(searchKeyword, currentPage)
-    console.log(data)
-  }, [])
+  // useEffect(async() => {
+  //   let data = await getAllPosts(searchKeyword, currentPage)
+  //   console.log(data)
+  // }, [])
 
   console.log(postsData)
   console.log(activeNavName)
@@ -70,7 +70,7 @@ const Articles = () => {
           <>
             <LatestRelease latestData={postsData} />
             <AllBlogPost allData={postsData} />
-            <PopularPost />
+            <PopularPost popularData={postsData} />
           </>
         ) : (
           <div class="container p-4 mx-auto w-[78.5%] flex flex-row gap-x-15 items-center lg:my-6 md:justify-between">

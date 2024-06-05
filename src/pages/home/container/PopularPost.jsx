@@ -6,15 +6,25 @@ import { getAllPosts, rankedPost } from "../../../services/posts"
 import { useState } from "react"
 import { Link } from "react-router-dom"
 
-const PopularPost = () => {
+const PopularPost = ({ popularData }) => {
   const [currentPage, setCurrentPage] = useState(1)  
   const [searchKeyword, setSearchKeyword] = useState("")  
+  
   const navigate = useNavigate()
 
-  const { data: postData } = useQuery({
-    queryKey: ["posts", searchKeyword],
-    queryFn: () => getAllPosts(searchKeyword, currentPage),
-  })
+  const [popularPosts, setPopularPosts] = useState([])
+
+  useEffect(() => {
+    console.log(popularPosts)
+    // let start = popularData?.data.length - 4
+    // setAllPosts(allData?.data.slice(start, start + 3))
+    console.log(popularData)
+  }, [])
+
+//   const { data: postData } = useQuery({
+//     queryKey: ["posts", searchKeyword],
+//     queryFn: () => getAllPosts(searchKeyword, currentPage),
+//   })
 
 // const { data: postData } = useQuery({
 //     queryKey: ["rank"],
@@ -23,11 +33,12 @@ const PopularPost = () => {
 
 //   console.log(postData)
 
-  let newArray = postData.data.sort((a, b) => {
+  let newArray = popularData.data.sort((a, b) => {
     if(a.likes === null) return 1
     if(b.likes === null) return -1
     return b.likes - a.likes
   })
+  setPopularPosts(newArray)
   console.log(newArray)
 
   return (
