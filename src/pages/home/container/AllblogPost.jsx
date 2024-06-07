@@ -6,7 +6,21 @@ import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import Spinner from "../../../components/Spinner"
 
-const AllblogPost = ({ allPosts }) => {
+const AllblogPost = () => {
+  const [allPosts, setAllPosts] = useState([])
+  const { data: postsData, isLoading: postsIsLoading, refetch } = useQuery({
+    queryKey: ["posts", searchKeyword],
+    queryFn: () => getAllPosts(searchKeyword, currentPage)
+  })
+
+  useEffect(() => {
+    if(postsData) {
+      let start = postsData?.data.length - 4
+      setAllPosts(postsData?.data.slice(start, start + 3))
+    }
+  }, [])
+  
+
   return (
     <>
       

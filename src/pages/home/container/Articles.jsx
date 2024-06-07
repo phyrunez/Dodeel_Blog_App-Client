@@ -18,10 +18,8 @@ const blogCategories = [
 ]
 
 const Articles = () => {
-  const [allPosts, setAllPosts] = useState([])
   const [ activeNavName, setActiveNavName ] = useState("All")
-  const [searchKeyword, setSearchKeyword] = useState("")
-  const [currentPage, setCurrentPage] = useState(1)
+  
   const [activeState, setActiveState] = useState(true)
   
   const { data: postsData, isLoading: postsIsLoading, refetch } = useQuery({
@@ -31,23 +29,6 @@ const Articles = () => {
 
   console.log(postsData)
   console.log(activeNavName)
-
-  useEffect(() => {
-    if(postsData) {
-      let start = postsData?.data.length - 4
-      setAllPosts(postsData?.data.slice(start, start + 3))
-    }
-  }, [])
-
-
-  let newArray
-  if(postsData) {
-    newArray = postsData?.data.sort((a, b) => {
-      if(a.likes === null) return 1
-      if(b.likes === null) return -1
-      return b.likes - a.likes
-    })
-  }
   
 
   let filteredCat
@@ -78,9 +59,9 @@ const Articles = () => {
 
       {activeNavName === "All" ? (
           <>
-            <LatestRelease latestData={postsData} />
-            <AllBlogPost allPosts={allPosts} />
-            <PopularPost newArray={newArray}  />
+            <LatestRelease  />
+            <AllBlogPost />
+            <PopularPost  />
           </>
         ) : (
           <div class="container p-4 mx-auto w-[78.5%] flex flex-row gap-x-15 items-center lg:my-6 md:justify-between">

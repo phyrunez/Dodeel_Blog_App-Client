@@ -2,14 +2,20 @@ import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import Spinner from "../../../components/Spinner"
 
-const LatestRelease = ({ latestData }) => {
+const LatestRelease = () => {
   const [latest, setLatest] = useState()
+  const [searchKeyword, setSearchKeyword] = useState("")
+  const [currentPage, setCurrentPage] = useState(1)
+
+  const { data: postsData, isLoading: postsIsLoading, refetch } = useQuery({
+    queryKey: ["posts", searchKeyword],
+    queryFn: () => getAllPosts(searchKeyword, currentPage)
+  })
   
   useEffect(() => {
-    console.log(latestData)
-    // let start = latestData?.data.length - 4
-    setLatest(latestData?.data[latestData?.data.length - 1])
-    console.log(latest)
+  
+    setLatest(postsData?.data[latestData?.data.length - 1])
+    
   }, [])
 
   return (

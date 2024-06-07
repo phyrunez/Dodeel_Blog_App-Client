@@ -7,7 +7,23 @@ import { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 import Spinner from "../../../components/Spinner"
 
-const PopularPost = ({ newArray }) => {
+const PopularPost = () => {
+    const [searchKeyword, setSearchKeyword] = useState("")
+    const [currentPage, setCurrentPage] = useState(1)
+    
+    const { data: postsData, isLoading: postsIsLoading, refetch } = useQuery({
+        queryKey: ["posts", searchKeyword],
+        queryFn: () => getAllPosts(searchKeyword, currentPage)
+    })
+
+    let newArray
+    if(postsData) {
+        newArray = postsData?.data.sort((a, b) => {
+            if(a.likes === null) return 1
+            if(b.likes === null) return -1
+            return b.likes - a.likes
+        })
+    }
   
   const navigate = useNavigate()
 
