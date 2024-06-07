@@ -1,8 +1,11 @@
 import axios from "axios"
 
+const API_URL = process.env.REACT_APP_API_URL
+console.log(API_URL)
+
 export const signup = async ({ name, email, password }) => {
     try {
-        const { data } = await axios.post('/api/users/register', {
+        const { data } = await axios.post(`${API_URL}/users/register`, {
             name,
             email,
             password
@@ -18,7 +21,7 @@ export const signup = async ({ name, email, password }) => {
 export const signin = async ({ email, password }) => {
     try {
 
-        const { data }  = await axios.post('api/users/login', {
+        const { data }  = await axios.post(`${API_URL}/users/login`, {
             email,
             password
         })
@@ -32,7 +35,7 @@ export const signin = async ({ email, password }) => {
 
 export const getAllUsers = async() => {
     try {
-        const  { data } = await axios.get(`/api/users/`)
+        const  { data } = await axios.get(`${API_URL}/users/`)
         
         return { data }
     } catch (error) {
@@ -49,7 +52,7 @@ export const getUserProfile = async({ token }) => {
             }
         }
 
-        const { data } = await axios.get('/api/users/profile', config);
+        const { data } = await axios.get(`${API_URL}/users/profile`, config);
         console.log(data)
         return data;
     } catch (error) {
@@ -66,7 +69,7 @@ export const updateProfile = async({ token, userData }) => {
             }
         }
 
-        const { data } = await axios.put('/api/users/updateProfile', userData, config);
+        const { data } = await axios.put(`${API_URL}/users/updateProfile`, userData, config);
         return data;
     } catch (error) {
         if(error.response && error.response.data.message) throw new Error(error.response.data.message)
@@ -83,7 +86,7 @@ export const updateProfilePicture = async({ userId, token, formData }) => {
             }
         }
 
-        const { data } = await axios.put(`api/users/updateUserProfilePicture/${userId}`, formData, config);
+        const { data } = await axios.put(`${API_URL}/users/updateUserProfilePicture/${userId}`, formData, config);
         console.log(data)
         return data;
     } catch (error) {
