@@ -8,7 +8,9 @@ import Spinner from "../../../components/Spinner"
 
 const AllblogPost = () => {
   const [allPosts, setAllPosts] = useState([])
-  
+  const [searchKeyword, setSearchKeyword] = useState("")
+  const [currentPage, setCurrentPage] = useState(1)
+
   const { data: postsData, isLoading: postsIsLoading, refetch } = useQuery({
     queryKey: ["posts", searchKeyword],
     queryFn: () => getAllPosts(searchKeyword, currentPage)

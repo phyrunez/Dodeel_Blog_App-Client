@@ -19,7 +19,8 @@ const blogCategories = [
 
 const Articles = () => {
   const [ activeNavName, setActiveNavName ] = useState("All")
-  
+  const [searchKeyword, setSearchKeyword] = useState("")
+  const [currentPage, setCurrentPage] = useState(1)
   const [activeState, setActiveState] = useState(true)
   
   const { data: postsData, isLoading: postsIsLoading, refetch } = useQuery({
