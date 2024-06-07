@@ -5,16 +5,7 @@ import { getAllPosts } from "../../../services/posts"
 import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 
-const AllblogPost = ({ allData }) => {
-  const [allPosts, setAllPosts] = useState([])
-
-  useEffect(() => {
-    console.log(allData)
-    let start = allData?.data.length - 4
-    setAllPosts(allData?.data.slice(start, start + 3))
-    console.log(allPosts)
-  }, [])
-
+const AllblogPost = ({ allPosts }) => {
   return (
     <>
       
@@ -52,6 +43,7 @@ const AllblogPost = ({ allData }) => {
               </div>    
             </div>
           ))}
+         
         </div>
         
     </>

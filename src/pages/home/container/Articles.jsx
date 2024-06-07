@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect, useMemo, useState } from "react"
 import ArticlesNav from "./ArticlesNav"
 import SearchArticles from "./SearchArticles"
 import LatestRelease from "./LatestRelease"
@@ -18,7 +18,7 @@ const blogCategories = [
 ]
 
 const Articles = () => {
-  
+  const [allPosts, setAllPosts] = useState([])
   const [ activeNavName, setActiveNavName ] = useState("All")
   const [searchKeyword, setSearchKeyword] = useState("")
   const [currentPage, setCurrentPage] = useState(1)
@@ -29,25 +29,34 @@ const Articles = () => {
     queryFn: () => getAllPosts(searchKeyword, currentPage)
   })
 
-  // useEffect(async() => {
-  //   let data = await getAllPosts(searchKeyword, currentPage)
-  //   console.log(data)
-  // }, [])
-
   console.log(postsData)
   console.log(activeNavName)
-  // if(activeNavName !== "All") {
-    // let data = postsData.data.filter(d => d.category === activeNavName)
-    // console.log(data)
-  // }
 
-  // if(activeNavName === "All") setActiveState(true)
+  useEffect(() => {
+    if(postsData) {
+      let start = postsData?.data.length - 4
+      setAllPosts(postsData?.data.slice(start, start + 3))
+    }else{
+      return <Spinner />
+    }
+  }, [])
 
-  let filteredCat = postsData?.data.filter(d => d.category === activeNavName)
-  console.log(filteredCat)
+
+  let newArray = postsData?.data.sort((a, b) => {
+    if(a.likes === null) return 1
+    if(b.likes === null) return -1
+    return b.likes - a.likes
+  })
+  
+
+  let filteredCat
+  if(!postsIsLoading) {
+    filteredCat = postsData?.data.filter(d => d.category === activeNavName)
+    console.log(filteredCat)
+  }
 
   return (
-    <>
+    <div>
       <div className="container mx-auto w-10/12 px-12 flex justify-between py-3 items-center">
         <SearchArticles />
         <div className="hidden xl:flex flex-row justify-end gap-x-4">
@@ -64,13 +73,13 @@ const Articles = () => {
           })}
         </div>
       </div>
-      {postsIsLoading && <Spinner />}
+      
 
       {activeNavName === "All" ? (
           <>
             <LatestRelease latestData={postsData} />
-            <AllBlogPost allData={postsData} />
-            <PopularPost popularData={postsData} />
+            <AllBlogPost allPosts={allPosts} />
+            <PopularPost newArray={newArray}  />
           </>
         ) : (
           <div class="container p-4 mx-auto w-[78.5%] flex flex-row gap-x-15 items-center lg:my-6 md:justify-between">
@@ -108,11 +117,11 @@ const Articles = () => {
               </div>
             ))}
           </div>
-      )}
+        )}
 
      
       
-    </>
+    </div>
     
   )
 }
