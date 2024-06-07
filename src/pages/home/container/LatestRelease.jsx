@@ -16,7 +16,7 @@ const LatestRelease = () => {
   
   useEffect(() => {
   
-    setLatest(postsData?.data[latestData?.data.length - 1])
+    setLatest(postsData?.data[postsData?.data.length - 1])
     
   }, [])
 
