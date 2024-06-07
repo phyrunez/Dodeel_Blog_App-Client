@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import Spinner from "../../../components/Spinner"
+import { getAllPosts } from "../../../services/posts"
 
 const LatestRelease = () => {
   const [latest, setLatest] = useState()

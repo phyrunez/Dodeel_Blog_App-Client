@@ -10,7 +10,7 @@ import Spinner from "../../../components/Spinner"
 const PopularPost = () => {
     const [searchKeyword, setSearchKeyword] = useState("")
     const [currentPage, setCurrentPage] = useState(1)
-    
+
     const { data: postsData, isLoading: postsIsLoading, refetch } = useQuery({
         queryKey: ["posts", searchKeyword],
         queryFn: () => getAllPosts(searchKeyword, currentPage)
