@@ -58,7 +58,7 @@ const Articles = () => {
       </div>
       
 
-      {activeNavName === "All" ? (
+      {activeNavName === "All" && postsData ? (
           <>
             <LatestRelease  />
             <AllBlogPost />
