@@ -5,10 +5,12 @@ import { useQuery } from "@tanstack/react-query"
 import { getAllPosts, rankedPost } from "../../../services/posts"
 import { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
+import Spinner from "../../../components/Spinner"
 
 const PopularPost = ({ newArray }) => {
   
   const navigate = useNavigate()
+
 
   return (
     <>
@@ -23,7 +25,7 @@ const PopularPost = ({ newArray }) => {
         </div>
 
         <div class="container p-4 mx-auto w-[78.5%] flex flex-row gap-x-15 items-center lg:my-6 md:justify-between">
-            {newArray.slice(0, 3).map(data => ( 
+            {newArray ? newArray.slice(0, 3).map(data => ( 
                 <div className ="card card-compact lg:w-[30%] md:w-[45%] xl:w-[30%]">
                     <figure>
                         <img className="w-[100%] h-[15rem]" src={data?.mainPhoto} alt="Shoes" />
@@ -55,7 +57,7 @@ const PopularPost = ({ newArray }) => {
                         </div>
                     </div>    
                 </div>
-            ))}
+            )) : ( <Spinner /> )}
             </div> 
 
     </>

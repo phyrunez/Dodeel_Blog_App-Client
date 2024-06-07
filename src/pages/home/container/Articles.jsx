@@ -36,17 +36,18 @@ const Articles = () => {
     if(postsData) {
       let start = postsData?.data.length - 4
       setAllPosts(postsData?.data.slice(start, start + 3))
-    }else{
-      return <Spinner />
     }
   }, [])
 
 
-  let newArray = postsData?.data.sort((a, b) => {
-    if(a.likes === null) return 1
-    if(b.likes === null) return -1
-    return b.likes - a.likes
-  })
+  let newArray
+  if(postsData) {
+    newArray = postsData?.data.sort((a, b) => {
+      if(a.likes === null) return 1
+      if(b.likes === null) return -1
+      return b.likes - a.likes
+    })
+  }
   
 
   let filteredCat

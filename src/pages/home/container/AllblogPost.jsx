@@ -4,13 +4,14 @@ import { useQuery } from "@tanstack/react-query"
 import { getAllPosts } from "../../../services/posts"
 import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
+import Spinner from "../../../components/Spinner"
 
 const AllblogPost = ({ allPosts }) => {
   return (
     <>
       
         <div class="container p-4 mx-auto w-[78.5%] flex flex-row gap-x-15 items-center lg:my-6 md:justify-between">
-        {allPosts.map(data => ( 
+        {allPosts ? allPosts.map(data => ( 
             <div className ="card card-compact lg:w-[30%] md:w-[45%] xl:w-[30%]">
               <figure>
                   <img className="w-[100%] h-[15rem]" src={data?.mainPhoto} alt="Shoes" />
@@ -42,7 +43,7 @@ const AllblogPost = ({ allPosts }) => {
                   </div>
               </div>    
             </div>
-          ))}
+          )) : ( <Spinner /> )}
          
         </div>
         
