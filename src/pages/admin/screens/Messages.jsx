@@ -49,8 +49,8 @@ const Messages = () => {
           View All Messages
         </h2>
         <div className="text-end">
-          <form onSubmit={submitSearchKeywordHandler} className="flex flex-col justify-center w-3/4 max-w-sm space-y-3 md:flex-row md:w-full md:space-x-3 md:space-y-0">
-            <div className=" relative ">
+          <form onSubmit={submitSearchKeywordHandler} className="flex lg:flex-row flex-col lg:mt-0 justify-center w-full md:max-w-sm space-y-3 md:flex-row md:w-full md:space-x-3 md:space-y-0">
+            <div className=" relative md:relative">
               <input 
                 type="text" 
                 id="&quot;form-subscribe-Filter" 
@@ -68,7 +68,7 @@ const Messages = () => {
       </div>
 
       {messageData.data.messages.map(msg => (
-        <div className="collapse bg-red-200 text-white my-6 mx-auto max-w-[60%]">
+        <div className="collapse bg-red-200 text-white my-6 mx-auto md:w-[100%]">
           <input type="radio" name="my-accordion-3" /> 
           <div className="collapse-title bg-[#025750] opacity-4 flex flex-row justify-between w-full">
             <p className=" text-white">Message Subject: {msg.subject.toUpperCase()} by {msg.email}</p>

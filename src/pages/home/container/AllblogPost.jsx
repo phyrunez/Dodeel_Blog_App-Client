@@ -27,9 +27,9 @@ const AllblogPost = () => {
   return (
     <>
       
-        <div class="container p-4 mx-auto w-[78.5%] flex flex-row gap-x-15 items-center lg:my-6 md:justify-between">
+        <div class="container p-4 mx-auto w-[78.5%] grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-x-12 items-center lg:my-6 md:justify-between">
         {allPosts ? allPosts.map(data => ( 
-            <div className ="card card-compact lg:w-[30%] md:w-[45%] xl:w-[30%]">
+            <div className ="card card-compact lg:w-[100%] md:w-[100%] xl:w-[100%] md:my-4 my-4">
               <figure>
                   <img className="w-[100%] h-[15rem]" src={data?.mainPhoto} alt="Shoes" />
               </figure>

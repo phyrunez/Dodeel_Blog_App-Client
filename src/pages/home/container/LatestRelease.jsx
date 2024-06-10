@@ -21,7 +21,7 @@ const LatestRelease = () => {
   }, [])
 
   return (
-    <div className="container mx-auto my-10 w-11/12 lg:w-[77%]">
+    <div className="container mx-auto my-10 lg:w-[77%] md:w-[73.5%] w-[75%]">
         <h1 className="text-[#333333] text-3xl py-5 font-bold">Latest Release</h1>
         {latest ? (
             <div className="flex flex-col lg:flex-row justify-between border bg-white shadow-md rounded-[1rem]">

@@ -23,10 +23,10 @@ const ManagePost = ({
         <div className="py-8">
           <div className="flex flex-row justify-between w-full mb-1 sm:mb-0">
               <h2 className="text-2xl leading-tight">
-                  Users
+                Blog Posts
               </h2>
               <div className="text-end">
-                  <form onSubmit={submitSearchKeywordHandler} className="flex flex-col justify-center w-3/4 max-w-sm space-y-3 md:flex-row md:w-full md:space-x-3 md:space-y-0">
+                  <form onSubmit={submitSearchKeywordHandler} className="flex lg:flex-row flex-col lg:mt-0 justify-center w-full max-w-sm space-y-3 md:flex-row md:w-full md:space-x-3 md:space-y-0">
                       <div className=" relative ">
                           <input 
                             type="text" 
@@ -44,7 +44,7 @@ const ManagePost = ({
                   </div>
               </div>
               <div className="px-4 py-4 -mx-4 overflow-x-auto sm:-mx-8 sm:px-8">
-                  <div className="inline-block min-w-full overflow-hidden rounded-lg shadow">
+                  <div className="inline-block w-full overflow-hidden rounded-lg shadow">
                       <table className="min-w-full leading-normal">
                           <thead>
                               <tr>

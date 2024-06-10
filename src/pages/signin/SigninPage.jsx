@@ -30,7 +30,7 @@ const SigninPage = () => {
       navigate("/")
     },
     onError: (error) => {   
-      toast.error("Invalid Email or Password, Please try again!")
+      toast.error("Invalid Email or Password, Please try again. Also make sure you have internet connection!")
       console.log(error)
     }
   })
@@ -109,9 +109,10 @@ const SigninPage = () => {
               )}
             </div>
 
-            <Link to="/forgot-password" className='text-sm font-semibold text-primary'>
+            {/* <Link to="/forgot-password" className='text-sm font-semibold text-primary'>
               Forgot Password?
-            </Link>
+            </Link> */}
+            <p className="text-sm font-semibold text-primary">Welcome Back🤗!!!</p>
             <button 
               type='submit' 
               // disabled={!isValid || isLoading}

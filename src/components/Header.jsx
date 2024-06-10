@@ -47,7 +47,7 @@ const Header = () => {
 
   return (
     <section className="sticky top-0 right-0 left-0 z-50 bg-white">
-        <header className="container mx-auto w-10/12 px-12 flex justify-between py-4 items-center">
+        <header className="container mx-auto lg:w-10/12 md:w-10/12 w-[100%] px-12 flex justify-between py-4 items-center">
             <Link to='/'>
                 <img className="w-20" src={images.Logo} alt="Dodeel Logo" />
             </Link>

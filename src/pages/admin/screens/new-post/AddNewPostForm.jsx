@@ -30,7 +30,7 @@ const AddNewPostForm = ({ submitHandler, defaultInputValues, setDefaultInputValu
 
   return (
     <form onSubmit={handleSubmit(submitHandler)}>
-        <div className='flex flex-row  gap-x-10'>
+        <div className='flex lg:flex-row md:flex-row flex-col  gap-x-10'>
             <div className="flex flex-col mb-6 w-full">
                 <label htmlFor="title" className='text-[#5a7184] font-semibold block'>Title</label>
                 <input 
@@ -64,7 +64,7 @@ const AddNewPostForm = ({ submitHandler, defaultInputValues, setDefaultInputValu
             </div>
         </div>
 
-        <div className='flex flex-row gap-x-10'>
+        <div className='flex lg:flex-row md:flex-row flex-col gap-x-10'>
             <div className="flex flex-col mb-6 w-full">
                 <label htmlFor="introText" className='text-[#5a7184] font-semibold block'>Introductory Text</label>
                 <textarea
@@ -98,7 +98,7 @@ const AddNewPostForm = ({ submitHandler, defaultInputValues, setDefaultInputValu
             </div>
         </div>           
 
-        <div className='flex flex-row w-full gap-x-10'>
+        <div className='flex lg:flex-row md:flex-row flex-col gap-x-10'>
             <div className="flex flex-col mb-6 w-full">
                 <label htmlFor="mainPhoto" className='text-[#5a7184] font-semibold block'>Main Photo</label>
                 <input 
@@ -129,7 +129,7 @@ const AddNewPostForm = ({ submitHandler, defaultInputValues, setDefaultInputValu
             </div>
         </div>
 
-        <div className="flex flex-row w-full gap-x-10">
+        <div className="flex lg:flex-row md:flex-row flex-col gap-x-10">
             <div className="flex flex-col mb-6 w-full">
                 <label htmlFor="date" className='text-[#5a7184] font-semibold block'>Date</label>
                 <input 
@@ -168,7 +168,7 @@ const AddNewPostForm = ({ submitHandler, defaultInputValues, setDefaultInputValu
             </div>
         </div>
         
-        <div className='flex flex-row gap-x-10'>
+        <div className='flex lg:flex-row md:flex-row flex-col gap-x-10'>
             <div className="flex flex-col mb-6 w-full">
                 <label htmlFor="italicText" className='text-[#5a7184] font-semibold block'>Italic Text</label>
                 <textarea
@@ -207,7 +207,7 @@ const AddNewPostForm = ({ submitHandler, defaultInputValues, setDefaultInputValu
         <button 
             type='submit' 
             // disabled={!isValid || isLoading}
-            className='bg-[#025750] text-white font-bold text-lg py-4 mx-auto w-[20%] rounded-lg my-6 disabled:opacity-70 disabled:cursor-not-allowed'
+            className='bg-[#025750] text-white font-bold lg:text-lg md:text-lg text-sm py-4 mx-auto lg:w-[20%] md:w-[20%] w-[30%] rounded-lg my-6 disabled:opacity-70 disabled:cursor-not-allowed'
         >
             {!isLoading ? "Add Post" : "Processing..."}
         </button>

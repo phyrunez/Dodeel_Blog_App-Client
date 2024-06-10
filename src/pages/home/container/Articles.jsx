@@ -8,6 +8,7 @@ import { useQuery } from "@tanstack/react-query"
 import { getAllPosts } from "../../../services/posts"
 import Spinner from "../../../components/Spinner"
 import { Link } from "react-router-dom"
+import { AiOutlineArrowDown } from "react-icons/ai"
 
 const blogCategories = [
     { id: 1, name: 'All' },
@@ -22,6 +23,7 @@ const Articles = () => {
   const [searchKeyword, setSearchKeyword] = useState("")
   const [currentPage, setCurrentPage] = useState(1)
   const [activeState, setActiveState] = useState(true)
+  const [selectedOption, setSelectedOption] = useState("")
   
   const { data: postsData, isLoading: postsIsLoading, refetch } = useQuery({
     queryKey: ["posts", searchKeyword],
@@ -38,11 +40,17 @@ const Articles = () => {
     console.log(filteredCat)
   }
 
+  const handleSelectChange = (e) => {
+    setSelectedOption(e.target.value)
+    if(e.target.value !== "All") setActiveNavName(e.target.value)
+    if(e.target.value === "All") setActiveNavName(e.target.value)
+  }
+
   return (
     <div>
-      <div className="container mx-auto w-10/12 px-12 flex justify-between py-3 items-center">
+      <div className="container mx-auto w-10/12 px-12 flex flex-col lg:flex-row md:flex-row justify-between py-3 items-center">
         <SearchArticles />
-        <div className="hidden xl:flex flex-row justify-end gap-x-4">
+        <div className="md:hidden hidden xl:flex flex-row justify-end gap-x-4">
           {blogCategories.map(item => {
             return (
               <ArticlesNav
@@ -54,6 +62,26 @@ const Articles = () => {
               />
             )
           })}
+        </div>
+        <div className="xl:hidden lg:visible md:visible">
+          <div className='flex flex-col gap-y-2.5 mt-2 relative'>
+            <div className='relative'>
+            <select
+              id="dynamic-select"
+              value={selectedOption}
+              onChange={handleSelectChange}
+              className='placeholder:font-ss font-ss text-[#c4c4c4] placeholder:text-[#c4c4c4] rounded-lg pl-4 pr-3  lg:w-[15rem] py-2 focus:outline-none shadow-[rgba(50,50,93,0.25)_0px_6px_12px_-2px,_rgba(0,0,0,0.3)_0px_3px_7px_-3px] md:py-2'
+            >
+              <option value="">--Select Category--</option>
+              {blogCategories.map((cat) => (
+                <option key={cat.id} value={cat.name}>
+                  {cat.name}
+                </option>
+              ))}
+            </select>
+              {/* <AiOutlineArrowDown className='absolute right-3 top-1/2 -translate-y-1/2 w-6 h-6 text-[#959EAD]' /> */}
+            </div>
+          </div>
         </div>
       </div>
       

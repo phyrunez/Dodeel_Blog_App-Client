@@ -76,21 +76,21 @@ const Header = () => {
             </Link>
             <div className="cursor-pointer lg:hidden">
                 {isMenuActive ? (
-                    <AiOutlineClose className="w-6 h-6" onClick={toggleMenuHandler} />
+                    <AiOutlineClose className="mt-3 w-6 h-6 cursor-pointer" onClick={toggleMenuHandler} />
                 ) : (
-                    <AiOutlineMenu className="w-6 h-6" onClick={toggleMenuHandler} />
+                    <img src={images.Menu} className="mt-3 w-8 h-8 cursor-pointer" onClick={toggleMenuHandler} alt="menu-icon" />
                 )}
             </div>
   
             {/* sidebar container */}
             {isMenuActive && (
-                <div className="fixed inset-0 lg:static lg:h-full lg:w-full">
+                <div className="fixed inset-0 z-50 lg:static lg:h-full lg:w-full">
                     {/* overlay */}
                     <div className="fixed inset-0 bg-black opacity-50 lg:hidden" onClick={toggleMenuHandler} />
   
                     {/* sidebar */}
                     <div 
-                      className="fixed top-0 bottom-0 left-0 z-50 w-3/4 overflow-y-auto bg-white p-4 
+                      className="fixed top-0 bottom-0 left-0 w-[50%] overflow-y-auto bg-white p-4 
                       lg:static lg:h-full lg:w-full lg:p-6"
                     >
                         <Link to="/">
