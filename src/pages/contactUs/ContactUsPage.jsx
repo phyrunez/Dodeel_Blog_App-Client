@@ -28,7 +28,7 @@ const ContactUsPage = () => {
             <ContactCard 
               icon={images.Phone}
               title={"Phone"}
-              contact={"(+234) 8123 456 789"}
+              contact={"(+234) 7051 417 492"}
             />
           </div>
         </div>

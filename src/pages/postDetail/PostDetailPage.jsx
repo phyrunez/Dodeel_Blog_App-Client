@@ -19,6 +19,7 @@ const ArticleDetailPage = () => {
     const [ body, setBody ] = useState(null)
     const [ clickedState, setClickedState] = useState(false)
     const [ postLikes, setPostLikes ] = useState()
+    const [profileDropdown, setProfileDropdown] = useState(false)
 
     const { data, isError, isLoading } = useQuery({
         queryKey: ["blog", slug], 
@@ -41,7 +42,7 @@ const ArticleDetailPage = () => {
     //     queryFn: () => rankedPost(),                                                  
     // })
 
-    const { mutate } = useMutation({
+    const { mutate, isPending } = useMutation({
         mutationFn: ({ slug }) => {
           return likePost({ slug })
         },
@@ -61,7 +62,7 @@ const ArticleDetailPage = () => {
             setBreadCrumbsData([
                 { name: 'Home', link: '/' },
                 { name: 'Blog', link: '/blog' },
-                { name: `${data.title}`, link: `/blog/${data.slug}` }
+                { name: `${data.title}`, link: `https://dodeel-blog-app-client.onrender.com/blog/${data.slug}` }
             ])
         } 
 
@@ -74,6 +75,8 @@ const ArticleDetailPage = () => {
             
             // setBody(bodyHandler)
         }
+
+        
     }, [])
 
     
@@ -82,6 +85,7 @@ const ArticleDetailPage = () => {
         const { slug } = data
         console.log(slug)
         mutate({ slug })  
+        setClickedState(true)
     }
 
   return (
@@ -145,10 +149,14 @@ const ArticleDetailPage = () => {
 
                             <div className="text-[#333333] text-center text-xs">
                                 <div className="mt-8 mb-3 flex flex-row gap-x-2">
-                                    <img className={`cursor-pointer h-4 w-4 ${clickedState ? 'border border-none bg-red-600 bg-contain': 'fill-transparent'}`} src={images.Vector_2} alt="instagram" onClick={() => handleLike(data)} /><span className="text-[#025750]">{postLikes}</span>
-                                    <img className="cursor-pointer h-4 w-4" src={images.Union} alt="twitter" />
-                                    <img className="cursor-pointer h-4 w-4" src={images.Polygon} alt="youtube" />
-                                    <img className="cursor-pointer h-4 w-4" src={images.Rectangle} alt="linkedin" />
+                                    <img 
+                                    className='cursor-pointer h-4 w-4' 
+                                    src={clickedState ? images.Vector__2 : images.Vector_2} 
+                                    alt="instagram" onClick={() => handleLike(data)} /><span className="text-[#025750]">{isPending ? "Thanks for stopping by..." : postLikes}</span>
+                                    {/* <img className="cursor-pointer h-4 w-4" src={images.Union} alt="twitter" /> */}
+                                   
+                                    <img className="cursor-pointer h-4 w-4" src={images.Polygon} onClick={() => setProfileDropdown(!profileDropdown)} alt="youtube" /><span className={`${profileDropdown ? 'hidden' : 'block' }`}><SocialShareButtons url={`https://dodeel-blog-app-client.onrender.com/blog/${data.slug}`} title={data.title} /></span>
+                                    {/* <img className="cursor-pointer h-4 w-4" src={images.Rectangle} alt="linkedin" /> */}
                                 </div>
                             </div>
                         </div>

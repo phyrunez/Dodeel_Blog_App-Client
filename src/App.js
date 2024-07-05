@@ -1,6 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 import { Toaster } from "react-hot-toast"
 import './App.css';
+import ScrollToTop from './components/ScrollToTop';
 import HomePage from './pages/home/HomePage';
 import ProfilePage from './pages/profile/ProfilePage'
 import SigninPage from './pages/signin/SigninPage'
@@ -19,6 +20,7 @@ import Messages from './pages/admin/screens/Messages';
 function App() {
   return (
     <div className="App font-poppins">
+      <ScrollToTop />
       <Routes>
         <Route index path='/' element={<HomePage />} />
         <Route path='/profile' element={<ProfilePage />} />

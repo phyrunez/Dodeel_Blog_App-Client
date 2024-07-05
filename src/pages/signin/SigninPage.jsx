@@ -58,7 +58,7 @@ const SigninPage = () => {
       <section className='container mx-auto px-5 py-10'>
         <div className="w-full max-w-sm mx-auto">
           <h1 className="font-roboto text-2xl font-bold text-center text-[#333333] mb-8">
-            Login to your Account
+            Login (Admin Only)
           </h1>
           <form onSubmit={handleSubmit(submitHandler)}>
             <div className="flex flex-col mb-6 w-full">

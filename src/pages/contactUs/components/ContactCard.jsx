@@ -10,7 +10,10 @@ function ContactCard({icon, title, contact}) {
         <div className='mt-[1rem] text-[#025750] font-bold'>{title}</div>
         <p className='leading-[28px] text-[16px] font-thin text-center mt-[2rem]'>
           {contact === 'lagosdodeelcds@gmail.com' ? 
-            <Link to="mailto:lagosdodeelcds@gmail.com">{contact}</Link>
+            <>
+              <Link to="mailto:lagosdodeelcds@gmail.com">{contact}</Link><br />
+              <Link to="mailto:contentdodeel@gmail.com">contentdodeel@gmail.com</Link>
+            </>
           : contact === '(+234) 8123 456 789' ? 
             <Link to="tel:+2348123456789">{contact}</Link>
           : contact}

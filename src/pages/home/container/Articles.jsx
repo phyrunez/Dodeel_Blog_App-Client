@@ -32,6 +32,8 @@ const Articles = () => {
 
   console.log(postsData)
   console.log(activeNavName)
+
+  useEffect(() => { refetch() }, [refetch])
   
 
   let filteredCat
@@ -97,7 +99,7 @@ const Articles = () => {
             {filteredCat.map(data => (
               <div className ="card card-compact lg:w-[30%] md:w-[45%] xl:w-[30%]">
                 <figure>
-                    <img className="w-[100%] h-[15rem]" src={data?.mainPhoto} alt="photo" />
+                    <img className="w-[100%] h-[15rem]" src={data?.mainPhoto} alt="main-photo" />
                 </figure>
                 <div className="card-body -mx-4">
                     <div  className="flex flex-row mt-5">

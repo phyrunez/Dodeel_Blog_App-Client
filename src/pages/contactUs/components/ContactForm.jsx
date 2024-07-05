@@ -19,7 +19,8 @@ function ContactForm() {
           })
         },
         onSuccess: () => {
-          toast.success("Message sent successfully, you will get a response within 48hours. Thanks!!")
+          toast.success("Message sent successfully, Kindly check your email for more details. Thanks!!")
+          setLoadingState(prev => !prev)
         },
         onError: (error) => {
           toast.error(error.message)

@@ -57,12 +57,13 @@ const Footer = () => {
                     Get a response tomorrow if you submit by 9pm today. If we received after 9pm will get a reponse the following day.
                 </p>
             </footer>
+        
         </section>
         <div className="mt-7">
             <div className="flex flex-col">
-                <img src={images.Logo} className=" w-16 mx-auto" alt="Dodeel Logo" />
+                <img src={images.NewLogo} className=" w-16 mx-auto" alt="Dodeel Logo" />
                 <div className='lg:mt-2 mx-auto max-w-sm lg:text-center gap-x-3 items-center'>
-                <ul className=' text-[#333333] text-center text-sm font-montserrat gap-y-5 flex lg:flex-row cursor-pointer gap-x-3 font-xs'>
+                <ul className=' text-[#333333] text-center text-sm font-montserrat mt-3 gap-y-5 flex lg:flex-row cursor-pointer gap-x-3 font-xs'>
                     {footerNav.map(item => {
                         return (
                             <NavItem key={item.name} item={item} />
@@ -72,20 +73,20 @@ const Footer = () => {
                 </div>
             </div>
             <div className="text-[#333333] text-center text-sm font-montserrat mx-auto max-w-sm">
-                <div className="mt-8 mb-3 flex flex-row mx-auto justify-center max-w-sm gap-x-3 items-center">
+                <div className="mt-6 mb-3 flex flex-row mx-auto justify-center max-w-sm gap-x-3 items-center">
                     <Link to="https://www.instagram.com/lagos_digital_onboarders">
-                        <img className="cursor-pointer" src={images.Instagram} alt="instagram" />
+                        <img className="cursor-pointer h-5 w-5" src={images.Instagram} alt="instagram" />
                     </Link>
-                    <img className="cursor-pointer" src={images.Twitter} alt="twitter" />
-                    <img className="cursor-pointer" src={images.Youtube} alt="youtube" />
-                    <img className="cursor-pointer" src={images.LinkedIn} alt="linkedin" />
+                    <Link to="https://www.instagram.com/lagos_digital_onboarders">
+                        <p className="text-[#fa7e1e] text-sm underline">Lagos_Digital_Onboarders</p>
+                    </Link>
                 </div>
                 <p>Follow us</p>
             </div>
 
             <hr className="border border-[#025750] mt-8 mb-2 container mx-auto w-[77%] items-center" />
 
-            <p className="text-[#333333] py-4 text-center text-sm font-montserrat mx-auto max-w-lg">Copyright Lagos Digital Onboarders Cds Inc © 2024. All Right Reserved</p>
+            <p className="text-[#333333] py-3 text-center text-sm font-montserrat mx-auto max-w-lg">Copyright Lagos Digital Onboarders Cds Inc © 2024. All Right Reserved</p>
         </div>
     </>
   )
