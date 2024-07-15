@@ -33,11 +33,13 @@ const AddNewPost = () => {
     },
     onSuccess: (data) => {
         dispatch(postActions.setPostDetails(data))
+        setLoadingState(prev => !prev)
         toast.success("Successfully added Post")
         // navigate("/")
     },
     onError: (error) => {
         console.log(error)
+        setLoadingState(prev => !prev)
         toast.error(error.message)
     }
   })

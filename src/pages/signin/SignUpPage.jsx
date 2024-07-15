@@ -16,6 +16,7 @@ const SignUpPage = () => {
   const [ confirmPassVal, setConfirmPassVal ] = useState("");
   const [loadingState, setLoadingState] = useState(false)
   const [showPassword, setShowPassword] = useState(false)
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false)
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -28,10 +29,12 @@ const SignUpPage = () => {
     onSuccess: (data) => {
         dispatch(userActions.setUserInfo(data));
         localStorage.setItem("account", JSON.stringify(data))
+        setLoadingState(prev => !prev)
         toast.success("successfully sign up")
     },
     onError: (error) => {
         toast.error(error.message)
+        setLoadingState(prev => !prev)
         console.log(error)
     }
   })
@@ -49,11 +52,14 @@ const SignUpPage = () => {
   const submitHandler = (data) => { 
     const { name, email, password } = data;
     mutate({ name, email, password });
-    setLoadingState(prev => !prev)
    }
 
    const togglePasswordVisibility = () => {
     setShowPassword(!showPassword)
+  }
+
+  const toggleConfirmPasswordVisibility = () => {
+    setShowConfirmPassword(!showConfirmPassword)
   }
 
    useEffect(() => {
@@ -142,7 +148,7 @@ const SignUpPage = () => {
                         <label htmlFor="confirmPassword" className='text-[#5a7184] font-semibold block'>Confirm Password</label>
                         <div className="flex flex-row relative border w-full rounded-lg mt-3">
                             <input 
-                                type="password" 
+                                type={showConfirmPassword ? "text" : "password"} 
                                 id="confirmPassword" 
                                 {...register("confirmPassword", {
                                     required: { value: true, message: "confirm password field is required!"},
@@ -156,8 +162,8 @@ const SignUpPage = () => {
                                 outline-none border ${errors.confirmPassword ? "border-red-500" : "border-[#c3cad9]"} ${confirmPassVal.length >= 6 && "border-green-500"}`} 
                             />
 
-                            <span onClick={togglePasswordVisibility} className="absolute right-5 bottom-5 cursor-pointer">
-                                {!showPassword ? <FaEyeSlash /> : <FaEye />}
+                            <span onClick={toggleConfirmPasswordVisibility} className="absolute right-5 bottom-5 cursor-pointer">
+                                {!showConfirmPassword ? <FaEyeSlash /> : <FaEye />}
                             </span>
                         </div>
 

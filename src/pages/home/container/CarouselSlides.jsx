@@ -64,7 +64,7 @@ const CarouselSlides = () => {
             {slidesArr.map((slide, index) => {
                 return(
                     <SwiperSlide key={index}>
-                        <img src={slide.name} className="w-[100%] h-[40rem]" alt={`Slide ${index + 1}`} />
+                        <img src={slide.name} className="w-[100%] h-[26rem]" alt={`Slide ${index + 1}`} />
                     </SwiperSlide>
                 )
             })}

@@ -64,7 +64,7 @@ const CarouselSlides = () => {
                 return(
                     <SwiperSlide key={index}>
                         <div className="relative">
-                            <img src={official.name} className="w-[100%] h-[40rem]" alt={`Slide ${index + 1}`} />
+                            <img src={official.name} className="w-[100%] h-[27rem]" alt={`Slide ${index + 1}`} />
                             <div className="absolute top-[10px] left-[10px] text-[#fff] bg-[#000000] opacity-50 py-[5px] px-[10px] rounded-[5px]">
                                 {official.officialName}
                             </div>

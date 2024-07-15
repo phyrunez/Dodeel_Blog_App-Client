@@ -15,7 +15,8 @@ import Admin from "./pages/admin/screens/Admin"
 import Comments from "./pages/admin/screens/Comments"
 import ManagePost from "./pages/admin/screens/ManagePost"
 import AdminLayout from "./pages/admin/AdminLayout"
-import Messages from './pages/admin/screens/Messages';
+// import Messages from './pages/admin/screens/Messages';
+import AllUsers from './pages/admin/screens/AllUsers'
 
 function App() {
   return (
@@ -32,7 +33,7 @@ function App() {
           <Route path='comments' element={<Comments />} />
           <Route path='posts/add-post' element={<AddNewPost />} />
           <Route path='posts/manage' element={<ManagePost />} />
-          <Route path='messages' element={<Messages />} />
+          <Route path='allUsers' element={<AllUsers />} />
         </Route>
         <Route path='/about' element={<AboutUsPage />} />
         <Route path='/contact-us' element={<ContactUsPage />} />

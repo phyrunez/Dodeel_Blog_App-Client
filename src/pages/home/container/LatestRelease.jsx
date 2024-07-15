@@ -5,7 +5,7 @@ import { getAllPosts } from "../../../services/posts"
 import { useQuery } from "@tanstack/react-query"
 
 const LatestRelease = () => {
-  const [latest, setLatest] = useState()
+//   const [latest, setLatest] = useState()
   const [searchKeyword, setSearchKeyword] = useState("")
   const [currentPage, setCurrentPage] = useState(1)
 
@@ -14,11 +14,13 @@ const LatestRelease = () => {
     queryFn: () => getAllPosts(searchKeyword, currentPage)
   })
   
-  useEffect(() => {
-  
-    setLatest(postsData?.data[postsData?.data.length - 1])
+//   useEffect(() => {
     
-  }, [])
+    // setLatest(postsData?.data[postsData?.data.length - 1])
+    let latest
+    if(!postsIsLoading) latest = postsData?.data[postsData?.data.length - 1]
+    
+//   }, [])
 
   return (
     <div className="container mx-auto my-10 lg:w-[77%] md:w-[73.5%] w-[75%]">

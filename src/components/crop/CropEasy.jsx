@@ -42,6 +42,8 @@ const CropEasy = ({ photo, setOpenCrop }) => {
     }
   })
 
+  console.log(userState.userInfo._id)
+
   const handleCropImage = async() => {
     try {
         const croppedImg = await getCroppedImg(photo?.url, croppedAreaPixels)

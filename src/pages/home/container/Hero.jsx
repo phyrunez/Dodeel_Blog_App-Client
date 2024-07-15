@@ -10,7 +10,7 @@ const Hero = () => {
                 Find all our blogs from here
             </h1>
             <p className='font-montserrat text-xs mx-auto w-[75%] xl:w-[40%] text-center  text-[#666666] md:text-center md:text-xs lg:text-center lg:text-sm'>
-                our blogs are written from very  research and well known writers so that we can provide you the best blogs and articles for you to read them all along
+                Our blogs are written through thorough research by competent writers providing you with the best, juiciest, most educative, and most exciting blogs and articles for you to read all day long.
             </p>
             <hr className="border border-[#003140] mt-20 container mx-auto w-[77%] items-center" />
         </div>

@@ -19,7 +19,7 @@ function ContactForm() {
           })
         },
         onSuccess: () => {
-          toast.success("Message sent successfully, Kindly check your email for more details. Thanks!!")
+          toast.success("Message sent successfully, Kindly check your email and spam mails for more details. Thanks!!")
           setLoadingState(prev => !prev)
         },
         onError: (error) => {

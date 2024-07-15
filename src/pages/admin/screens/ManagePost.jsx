@@ -44,25 +44,25 @@ const ManagePost = ({
                   </div>
               </div>
               <div className="px-4 py-4 -mx-4 overflow-x-auto sm:-mx-8 sm:px-8">
-                  <div className="inline-block w-full overflow-hidden rounded-lg shadow">
+                  <div className="inline-block w-full overflow-x-auto rounded-lg shadow">
                       <table className="min-w-full leading-normal">
                           <thead>
                               <tr>
-                                  <th scope="col" className="px-5 py-3 text-sm font-normal text-left text-gray-800 uppercase bg-white border-b border-gray-200">
+                                  <th scope="col" className="px-10 lg:px-5 md:px-5 py-3 text-xs lg:text-sm md:text-sm font-normal text-left text-gray-800 uppercase bg-white border-b border-gray-200">
                                       Title
                                   </th>
-                                  <th scope="col" className="px-5 py-3 text-sm font-normal text-left text-gray-800 uppercase bg-white border-b border-gray-200">
+                                  <th scope="col" className="px-10 lg:px-5 md:px-5 py-3 text-xs lg:text-sm md:text-sm font-normal text-left text-gray-800 uppercase bg-white border-b border-gray-200">
                                       Category
                                   </th>
-                                  <th scope="col" className="px-5 py-3 text-sm font-normal text-left text-gray-800 uppercase bg-white border-b border-gray-200">
+                                  <th scope="col" className="px-10 lg:px-5 md:px-5 py-3 text-xs lg:text-sm md:text-sm font-normal text-left text-gray-800 uppercase bg-white border-b border-gray-200">
                                       Created at
                                   </th>
-                                  <th scope="col" className="px-5 py-3 text-sm font-normal text-left text-gray-800 uppercase bg-white border-b border-gray-200">
+                                  <th scope="col" className="px-10 lg:px-5 md:px-5 py-3 text-xs lg:text-sm md:text-sm font-normal text-left text-gray-800 uppercase bg-white border-b border-gray-200">
                                       Author
                                   </th>
-                                  <th scope="col" className="px-5 py-3 text-sm font-normal text-left text-gray-800 uppercase bg-white border-b border-gray-200">
+                                  <th scope="col" className="px-10 lg:px-5 md:px-5 py-3 text-xs lg:text-sm md:text-sm font-normal text-left text-gray-800 uppercase bg-white border-b border-gray-200">
                                   </th>
-                                  <th scope="col" className="px-5 py-3 text-sm font-normal text-left text-gray-800 uppercase bg-white border-b border-gray-200">
+                                  <th scope="col" className="px-10 lg:px-5 md:px-5 py-3 text-xs lg:text-sm md:text-sm font-normal text-left text-gray-800 uppercase bg-white border-b border-gray-200">
                                   </th>
                               </tr>
                           </thead>
@@ -81,7 +81,7 @@ const ManagePost = ({
                             </tr> : (
                               postData?.data?.map((post) => (
                                 <tr key={post?._id}>
-                                  <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
+                                  <td className="px-5 py-5 text-xs lg:text-sm md:text-sm bg-white border-b border-gray-200">
                                       <div className="flex items-center">
                                           <div className="flex-shrink-0">
                                               <a href="/" className="relative block">
@@ -101,12 +101,12 @@ const ManagePost = ({
                                           </div>
                                       </div>
                                   </td>
-                                  <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
+                                  <td className="px-12 lg:px-5 md:px-5 py-5 text-xs lg:text-sm md:text-sm bg-white border-b border-gray-200">
                                       <p className="text-gray-900 whitespace-no-wrap">
                                           {post.category ? post.category : "Uncategorized"}
                                       </p>
                                   </td>
-                                  <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
+                                  <td className="px-5 py-5 text-xs lg:text-sm md:text-sm bg-white border-b border-gray-200">
                                       <p className="text-gray-900 whitespace-no-wrap">
                                           {new Date(post.createdAt).toLocaleDateString(
                                             'en-US',
@@ -118,12 +118,12 @@ const ManagePost = ({
                                           )}
                                       </p>
                                   </td>
-                                  <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
+                                  <td className="px-5 py-5 text-xs lg:text-sm md:text-sm bg-white border-b border-gray-200">
                                       <div className="flex gap-x-2">
                                         {post.author ? post.author : "Do Deel"}
                                       </div>
                                   </td>
-                                  <td className="px-5 py-5 text-sm bg-white border-b border-gray-200" onClick={() => deleteHandler(post.slug)}>
+                                  <td className="px-5 py-5 text-xs lg:text-sm md:text-sm bg-white border-b border-gray-200" onClick={() => deleteHandler(post.slug)}>
   
                                       <AiFillDelete className='text-red-500 cursor-pointer' />
                                   </td>

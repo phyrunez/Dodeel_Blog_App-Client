@@ -32,12 +32,12 @@ const PopularPost = () => {
     <>
         <div className="container mx-auto w-[78%] xl:w-10/12 px-4 xl:px-12 flex justify-between pt-20 items-center">
             <h1 className="text-[#333333] text-3xl  font-bold">Popular Post</h1>
-            <button
+            {/* <button
                 onClick={() => navigate('/')}
                 className="border-2 border-[#025750] rounded-md bg-[#025750] px-5 py-1 text-white font-semibold hover:bg-transparent hover:text-[#025750] transition-all duration-300"
             >
                 View All
-            </button>
+            </button> */}
         </div>
 
         <div class="container p-4 mx-auto w-[78.5%] grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-x-12 items-center lg:my-6 md:justify-between">

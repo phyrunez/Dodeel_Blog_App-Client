@@ -7,7 +7,7 @@ import { Link } from "react-router-dom"
 import Spinner from "../../../components/Spinner"
 
 const AllblogPost = () => {
-  const [allPosts, setAllPosts] = useState([])
+  // const [allPosts, setAllPosts] = useState([])
   const [searchKeyword, setSearchKeyword] = useState("")
   const [currentPage, setCurrentPage] = useState(1)
 
@@ -16,20 +16,20 @@ const AllblogPost = () => {
     queryFn: () => getAllPosts(searchKeyword, currentPage)
   })
 
-  useEffect(() => {
+  // useEffect(() => {
+    let allPosts
     if(postsData) {
-      let start = postsData?.data.length - 4
-      setAllPosts(postsData?.data.slice(start, start + 3))
+      allPosts = postsData?.data.slice(0, 3)
     }
-  }, [])
+  // }, [])
   
 
   return (
     <>
       
-        <div class="container p-4 mx-auto w-[78.5%] grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-x-12 items-center lg:my-6 md:justify-between">
+        <div className="container p-4 mx-auto w-[78.5%] grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-x-12 items-center lg:my-6 md:justify-between">
         {allPosts ? allPosts.map(data => ( 
-            <div className ="card card-compact lg:w-[100%] md:w-[100%] xl:w-[100%] md:my-4 my-4">
+            <div className ="card card-compact lg:w-[100%] md:w-[100%] xl:w-[100%] md:my-4 my-4" key={data.title}>
               <figure>
                   <img className="w-[100%] h-[15rem]" src={data?.mainPhoto} alt="Shoes" />
               </figure>
@@ -60,7 +60,7 @@ const AllblogPost = () => {
                   </div>
               </div>    
             </div>
-          )) : ( <Spinner /> )}
+        )) : (<Spinner />)}
          
         </div>
         

@@ -47,6 +47,8 @@ const ProfilePicture = ({ avatar }) => {
     }
   })
 
+  console.log(userState.userInfo._id)
+
   const handleDeleteImage = () => {
     const warningMsg = createPortal(window.confirm("Do you want to delete your profile picture?"), document.getElementById('portal'))
     if(warningMsg) {

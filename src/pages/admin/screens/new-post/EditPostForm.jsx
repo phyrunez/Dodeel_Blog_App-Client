@@ -43,9 +43,11 @@ const EditPostForm = ({ isLoading, slug, changeStateHandler }) => {
         },
         onSuccess: (data) => {
           toast.success("Blog Post updated successfully")
+          setLoadingState(prev => !prev)
           changeStateHandler()
         },
         onError: (error) => {
+          setLoadingState(prev => !prev)
           toast.error(error.message)
         }
       })

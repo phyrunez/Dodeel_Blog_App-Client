@@ -23,14 +23,17 @@ const SigninPage = () => {
       return signin({ email, password })
     },
     onSuccess: (data) => {
-      console.log(data)
       dispatch(userActions.setUserInfo(data))
       localStorage.setItem('user-account', JSON.stringify(data))
-      toast.success("welcome back to DODEEL Blog App")
+      dispatch(userActions.addUser(data))
+      setLoadingState(prev => !prev)
+      toast.success("welcome back to the Lagos Digital Onboarders Blog App")
+      
       navigate("/")
     },
     onError: (error) => {   
       toast.error("Invalid Email or Password, Please try again. Also make sure you have internet connection!")
+      setLoadingState(prev => !prev)
       console.log(error)
     }
   })

@@ -1,6 +1,7 @@
 import { useRef } from "react"
 import { images } from "../constants"
 import { Link, useNavigate } from "react-router-dom"
+import toast from "react-hot-toast"
 
 const footerNav = [
     { link: '/', name: 'Home' },
@@ -25,6 +26,8 @@ const Footer = () => {
   const handleEnteredEmail = () => {
     if(inputRef.current.value !== "") {
         navigate("/contact-us")
+    }else {
+        toast.error("Kindly enter a valid Email Address!!")
     }
   }
 
@@ -47,14 +50,14 @@ const Footer = () => {
                         placeholder="Your Email"
                     />
                     <button
-                        className="mt-5 lg:mt-0 border border-white rounded-md bg-[#025750] px-3 py-1 text-white font-semibold hover:bg-white hover:text-[#025750] transition-all duration-300"
+                        className="mt-4 lg:mt-0 border border-white rounded-md bg-[#025750] px-3 py-1 text-white font-semibold hover:bg-white hover:text-[#025750] transition-all duration-300"
                         onClick={handleEnteredEmail}
                     >
                         Get started
                     </button>
                 </div>
                 <p className='font-montserrat text-xs mx-auto max-w-md text-center text-[#bbbbbb] mt-5 md:text-center md:text-xs lg:text-center lg:text-xs'>
-                    Get a response tomorrow if you submit by 9pm today. If we received after 9pm will get a reponse the following day.
+                    Get a response within 24 hours after you sent a message to us on or before 9pm today. If we received after 9pm, you will get a response within 48 hours.
                 </p>
             </footer>
         

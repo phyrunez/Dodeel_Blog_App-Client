@@ -35,7 +35,6 @@ const Articles = () => {
 
   useEffect(() => { refetch() }, [refetch])
   
-
   let filteredCat
   if(!postsIsLoading) {
     filteredCat = postsData?.data.filter(d => d.category === activeNavName)
@@ -90,13 +89,13 @@ const Articles = () => {
 
       {activeNavName === "All" ? (
           <>
-            <LatestRelease  />
+            <LatestRelease />
             <AllBlogPost />
             <PopularPost  />
           </>
         ) : (
           <div class="container p-4 mx-auto w-[78.5%] flex flex-row gap-x-15 items-center lg:my-6 md:justify-between">
-            {filteredCat.map(data => (
+            {filteredCat ? filteredCat.map(data => (
               <div className ="card card-compact lg:w-[30%] md:w-[45%] xl:w-[30%]">
                 <figure>
                     <img className="w-[100%] h-[15rem]" src={data?.mainPhoto} alt="main-photo" />
@@ -128,7 +127,7 @@ const Articles = () => {
                     </div>
                 </div>    
               </div>
-            ))}
+            )) : (<Spinner />)}
           </div>
         )}
 

@@ -64,7 +64,7 @@ const AboutUsPage = () => {
           <img src={images.Vector} alt="vector" className = "hidden xl:block absolute rotate-180 left-0 bottom-[-25vh] w-[25%]" />
           
           <div className='absolute top-[45vh] xl:top-[55vh] xs:mb-[10rem] md:w-[80%] w-[85%] xl:w-[50%] bg-white rounded-lg shadow-xl p-8'>
-            <div className='text-center'>
+            <div>
               <h1 className='text-[#AF6E4D] text-2xl '>Mission</h1>
 
               <div className='mt-[0.5rem] leading-10'>
@@ -76,7 +76,7 @@ const AboutUsPage = () => {
               </div>
             </div>
 
-            <div className='mt-[2rem] text-center'>
+            <div className='mt-[2rem]'>
               <h1 className='text-[#AF6E4D] text-2xl'>Vision</h1>
 
               <div className='mt-[0.5rem] leading-10'>
@@ -86,7 +86,7 @@ const AboutUsPage = () => {
               </div>
             </div>
 
-            <div className='mt-[3rem]'>
+            <div className='mt-[2rem]'>
               <h1 className='text-[#AF6E4D] text-2xl'>Our Meeting Schedule</h1>
 
               <div className='mt-[0.5rem] leading-8'>
