@@ -55,7 +55,7 @@ const ArticleDetailPage = () => {
            console.log(data)
            setPostLikes((prevLikes) => ({
                 ...prevLikes,
-                [slug]: (prevLikes[slug] || data?.likes++)
+                [slug]: (prevLikes[slug] || data?.likes + 1)
             }));
             console.log(postLikes)
         },
