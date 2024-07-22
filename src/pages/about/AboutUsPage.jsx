@@ -36,8 +36,6 @@ const AboutUsPage = () => {
           </div>
         </div>
 
-        <CarouselSlides />
-
         <div className=' xl:w-screen lg:h-[50vh] md:h-[40vh] h-[30vh] xl:h-[70vh] bg-[#025750] relative w-full xl:mx-0 mb-[150vh] lg:mb-[100vh] md:mb-[120vh] xl:mt-[20%] lg:mt-[10%] md:mt-[70%] flex items-center justify-center'>
           <h2 className='text-white font-semibold xl:font-bold leading-[31.99px] text-[20px] xl:text-[40px] text-center mt-[2rem] absolute top-0'>Lagos State Digital Onboarders CDS</h2>
           <img src = {images.Group1} alt="svg" className = "absolute bottom-[5vh] xl:bottom-[15vh]" />
@@ -50,9 +48,7 @@ const AboutUsPage = () => {
 
               <div className='mt-[0.5rem] lg:leading-10 md:leading-8 leading-6'>
                 <p className='font font-poppins'>
-                  To accelerate the achievement of this goal. In response to the ongoing requests from Corp Members to join DIGITAL ONBOARDERS as a Community Development Service
-                  (CDS), we've recognized the need to engage Corp Members constructively beyond camp. Hence, we've established the
-                  Digital Onboarders CDS Group in line with the NYSC mandate.
+                  To accelerate inclusive digital adoption, optimization, and transformation; improve members' employability, facilitate MSME growth, and deepen digital literacy of secondary school students.
                 </p>
               </div>
             </div>
@@ -62,7 +58,7 @@ const AboutUsPage = () => {
 
               <div className='mt-[0.5rem] lg:leading-10 md:leading-8 leading-6'>
                 <p className='font font-poppins'>
-                  To serve as a catalyst for personal development and economic growth.
+                  Be the best NYSC CDS, enabling every member to make the most of their service year.
                 </p>
               </div>
             </div>
@@ -81,6 +77,8 @@ const AboutUsPage = () => {
             </div>
           </div>
         </div>
+
+        <CarouselSlides />
         
       </div>
     </MainLayout>

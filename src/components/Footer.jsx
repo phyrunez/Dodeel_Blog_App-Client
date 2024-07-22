@@ -34,9 +34,9 @@ const Footer = () => {
   return (
     <>
         <section className="bg-[rgb(2,87,80)] lg:py-[5rem] ">
-            <div className="rounded-xl">
+            {/* <div className="rounded-xl">
                 <img className="absolute object-cover bg-center bg-contain max-h-[150px] w-[40%] -mt-20" src={images.Vector} alt="vector" />
-            </div>
+            </div> */}
             <footer className="container my-15 mx-auto w-full md:w-[70%] xl:max-w-[50%] px-12 py-4 items-center">
                 <h1 className='font-montserrat text-3xl text-center font-bold py-5 text-white md:text-center md:text-3xl lg:text-center lg:text-3xl lg:font-bold'>
                     Get our stories delivered From us to your inbox weekly.

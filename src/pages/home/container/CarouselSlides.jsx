@@ -25,7 +25,7 @@ const slidesArr = [
 const CarouselSlides = () => {
   return (
     <div className="container mx-auto lg:w-10/12 md:w-10/12 w-[100%] px-12 flex flex-col  justify-between py-3 items-center">
-        <h1 className="text-[#333333] text-3xl text-center my-10 font-bold">Events Gallery</h1>
+        <h1 className="text-[#333333] text-4xl text-center my-10 font-bold">EVENTS GALLERY</h1>
         <Swiper
             modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
             spaceBetween={30}
