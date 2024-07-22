@@ -24,7 +24,7 @@ const officialsArr = [
 const CarouselSlides = () => {
   return (
     <div className="container mx-auto lg:w-10/12 md:w-10/12 w-[100%] px-12 flex flex-col  justify-between py-3 items-center">
-        <h1 className="text-[#333333] text-3xl text-center lg:my-10 md:my-10 my-6 font-bold">Our NYSC Officials</h1>
+        <h1 className="text-[#333333] text-3xl text-center lg:my-10 md:my-10  font-bold">Our NYSC Officials</h1>
         <Swiper
             modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
             spaceBetween={30}
