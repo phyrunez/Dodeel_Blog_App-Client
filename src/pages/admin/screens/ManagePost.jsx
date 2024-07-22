@@ -22,7 +22,7 @@ const ManagePost = ({
       <div className="w-full px-4 mx-auto">
         <div className="py-8">
           <div className="flex flex-row justify-between w-full mb-1 sm:mb-0">
-              <h2 className="text-2xl leading-tight">
+              <h2 className="lg:text-2xl md:text-2xl text-lg leading-tight">
                 Blog Posts
               </h2>
               <div className="text-end">

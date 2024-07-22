@@ -23,7 +23,7 @@ const LatestRelease = () => {
 //   }, [])
 
   return (
-    <div className="container mx-auto my-10 lg:w-[77%] md:w-[73.5%] w-[75%]">
+    <div className="container mx-auto my-10 lg:w-[77%] md:w-[75%] w-[90%]">
         <h1 className="text-[#333333] text-3xl py-5 font-bold">Latest Release</h1>
         {latest ? (
             <div className="flex flex-col lg:flex-row justify-between border bg-white shadow-md rounded-[1rem]">
@@ -44,13 +44,13 @@ const LatestRelease = () => {
                             </p>
                         </div>
                         <div className="text-[#111111]">
-                            <h2 className="text-4xl py-5 font-bold">{latest.title}</h2>
-                            <span className="py-5">By {latest?.author}</span>
-                            <p className="py-5">{latest.introText.substring(0, 200)}...</p>
+                            <h2 className="text-2xl lg:text-4xl md:text-4xl py-5 font-bold">{latest.title}</h2>
+                            <span className="text-sm py-5">By {latest?.author}</span>
+                            <p className="text-sm py-5">{latest.introText.substring(0, 200)}...</p>
                         </div>
                     </div>
                     <div className="mt-[.5rem] pr-4 pb-2">
-                        <Link to={`/blog/${latest?.slug}`} className="text-[#003140] underline">
+                        <Link to={`/blog/${latest?.slug}`} className="text-[#003140] text-sm underline">
                             Read More...
                         </Link>
                         

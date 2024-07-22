@@ -24,7 +24,7 @@ const slidesArr = [
 
 const CarouselSlides = () => {
   return (
-    <div className="container mx-auto w-10/12 px-12 flex flex-col  justify-between py-3 items-center">
+    <div className="container mx-auto lg:w-10/12 md:w-10/12 w-[100%] px-12 flex flex-col  justify-between py-3 items-center">
         <h1 className="text-[#333333] text-3xl text-center my-10 font-bold">Events Gallery</h1>
         <Swiper
             modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
@@ -64,7 +64,7 @@ const CarouselSlides = () => {
             {slidesArr.map((slide, index) => {
                 return(
                     <SwiperSlide key={index}>
-                        <img src={slide.name} className="w-[100%] h-[26rem]" alt={`Slide ${index + 1}`} />
+                        <img src={slide.name} className="lg:w-[100%] md:w-[100%] w-[100%] lg:h-[26rem] md:h-[25rem] h-[22rem]" alt={`Slide ${index + 1}`} />
                     </SwiperSlide>
                 )
             })}

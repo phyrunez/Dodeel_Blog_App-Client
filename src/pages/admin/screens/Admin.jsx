@@ -80,7 +80,7 @@ const Admin = () => {
   return (
     <div className="p-6">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
-        <div className="bg-[#FFBF00] rounded-md border border-gray-100 p-6 shadow-md shadow-black/5">
+        <div className="bg-[#FFBF00] rounded-md border border-gray-100 p-6 lg:w-full shadow-md shadow-black/5">
           <div className="flex justify-between mb-6">
             <div>
               <div className="flex items-center mb-1">

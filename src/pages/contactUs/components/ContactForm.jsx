@@ -52,7 +52,7 @@ function ContactForm() {
     }
 
   return (
-    <div className='absolute top-[45vh] xl:top-[55vh] w-[90%] xl:w-[50%] bg-white rounded-lg shadow-xl p-8'>
+    <div className='absolute lg:top-[45vh] md:top-[45vh] top-[40vh] xl:top-[55vh] w-[90%] xl:w-[50%] bg-white rounded-lg shadow-xl p-8'>
         <form onSubmit={handleSubmit(submitHandler)}>
             <h2 className='mb-[2rem] text-[32px] font-bold leading-[63.96px]'>Contact Us</h2>
             <div className='flex flex-col xl:flex-row xl:flex-wrap items-center justify-evenly'>

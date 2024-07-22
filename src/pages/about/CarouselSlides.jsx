@@ -23,8 +23,8 @@ const officialsArr = [
 
 const CarouselSlides = () => {
   return (
-    <div className="container mx-auto w-10/12 px-12 flex flex-col  justify-between py-3 items-center">
-        <h1 className="text-[#333333] text-3xl text-center my-10 font-bold">Our NYSC Officials</h1>
+    <div className="container mx-auto lg:w-10/12 md:w-10/12 w-[100%] px-12 flex flex-col  justify-between py-3 items-center">
+        <h1 className="text-[#333333] text-3xl text-center lg:my-10 md:my-10 my-6 font-bold">Our NYSC Officials</h1>
         <Swiper
             modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
             spaceBetween={30}
@@ -64,7 +64,7 @@ const CarouselSlides = () => {
                 return(
                     <SwiperSlide key={index}>
                         <div className="relative">
-                            <img src={official.name} className="w-[100%] h-[27rem]" alt={`Slide ${index + 1}`} />
+                            <img src={official.name} className="lg:w-[100%] md:w-[100%] w-[100%] lg:h-[26rem] md:h-[25rem] h-[24rem]" alt={`Slide ${index + 1}`} />
                             <div className="absolute top-[10px] left-[10px] text-[#fff] bg-[#000000] opacity-50 py-[5px] px-[10px] rounded-[5px]">
                                 {official.officialName}
                             </div>

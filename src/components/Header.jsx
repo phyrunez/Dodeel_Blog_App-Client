@@ -67,7 +67,7 @@ const Header = () => {
             </div>
             <div className={`${
                 navIsVisible ? "right-0" : "-right-full"
-            } transition-all duration-300 mt-[85px] lg:mt-0 bg-[#929E9B] lg:bg-transparent z-[49] flex flex-col w-full lg:w-auto justify-center lg:justify-end lg:flex-row fixed top-0 bottom-0 lg:static gap-x-9 items-center`}>
+            } transition-all duration-300 mt-[74px] lg:mt-0 bg-[#929E9B] lg:bg-transparent z-[49] flex flex-col w-full lg:w-auto justify-center lg:justify-end lg:flex-row fixed top-0 bottom-0 lg:static gap-x-9 items-center`}>
                 <ul className="text-white items-center gap-y-5 lg:text-dark-soft flex flex-col lg:flex-row gap-x-8 font-semibold">
                     {navItemInfo.map(item => {
                         return <NavItem key={item.name} item={item} />

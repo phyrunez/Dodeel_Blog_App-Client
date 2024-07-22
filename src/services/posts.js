@@ -8,7 +8,7 @@ export const addPost = async({ title, author, introText, supportText, italicText
 {
     try {
         
-        const { data } = await axios.post(`${API_URL}/posts`, {
+        const { data } = await axios.post(`api/posts`, {
             title, author, introText, supportText, italicText,
             summaryText, mainPhoto, supportPhoto, category, date, likes
         })
@@ -80,7 +80,7 @@ export const likePost = async({ slug }) => {
 
 export const rankedPost = async() => {
     try {
-        const { data } = await axios.get('/api/posts/ranked');
+        const { data } = await axios.get('api/posts/ranked');
         console.log(data)
         return data;
     } catch (error) {

@@ -2,7 +2,7 @@
 const Hero = () => {
   return (
     <section className='flex flex-col'>
-        <div className='mt-10 lg:mt-15'>
+        <div className='mt-8 lg:mt-15 md:mt-15'>
             <p className='font-montserrat text-xs text-center  text-[#666666] md:text-center md:text-xs lg:text-center lg:text-sm'>
                 OUR BLOG
             </p>

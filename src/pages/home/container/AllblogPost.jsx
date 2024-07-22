@@ -27,7 +27,7 @@ const AllblogPost = () => {
   return (
     <>
       
-        <div className="container p-4 mx-auto w-[78.5%] grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-x-12 items-center lg:my-6 md:justify-between">
+        <div className="container p-4 mx-auto lg:w-[78.5%] md:w-[78.5%] w-[98%] grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-x-12 items-center lg:my-6 md:justify-between">
         {allPosts ? allPosts.map(data => ( 
             <div className ="card card-compact lg:w-[100%] md:w-[100%] xl:w-[100%] md:my-4 my-4" key={data.title}>
               <figure>
