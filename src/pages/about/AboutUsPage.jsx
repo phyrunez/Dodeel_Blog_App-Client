@@ -19,9 +19,9 @@ const AboutUsPage = () => {
                 <div className="w-full lg:justify-start px-2 lg:px-[50px]">
                     <div className="flex flex-col py-2 lg:py-[20px] ">
                       <div className=''>
-                        <h1 className='text-[#FFBF00] md:text-2xl lg:text-lg text-base'>Our Culture</h1>
+                        <h1 className='text-[#FFBF00] md:text-2xl lg:text-2xl text-base'>Our Culture</h1>
 
-                        <div className='mt-[0.5rem] md:leading-10 xl:leading-7 lg:leading-5 leading-6 text-sm'>
+                        <div className='mt-[0.5rem] md:leading-10 xl:leading-7 lg:leading-5 leading-6 lg:text-2xl md:text-2xl text-sm'>
                           <p className='font font-poppins'>At Digital Onboarders CDS, our culture thrives on skill development, open communication, order, and a strong community spirit. We
                             honor and respect diverse perspectives, consistently pursue excellence, and encourage innovative thinking. Above all, we embrace a growth
                             mindset that propels us to overcome challenges and achieve continuous personal and collective growth.
@@ -36,13 +36,13 @@ const AboutUsPage = () => {
           </div>
         </div>
 
-        <div className=' xl:w-screen lg:h-[50vh] md:h-[40vh] h-[30vh] xl:h-[70vh] bg-[#025750] relative w-full xl:mx-0 mb-[150vh] lg:mb-[100vh] md:mb-[120vh] xl:mt-[20%] lg:mt-[10%] md:mt-[70%] flex items-center justify-center'>
+        <div className=' xl:w-screen lg:h-[50vh] md:h-[40vh] h-[30vh] xl:h-[70vh] bg-[#025750] relative w-full xl:mx-0 mb-[150vh] lg:mb-[80vh] md:mb-[120vh] xl:mt-[20%] lg:mt-[0%] md:mt-[30%] flex items-center justify-center'>
           <h2 className='text-white font-semibold xl:font-bold leading-[31.99px] text-[20px] xl:text-[40px] text-center mt-[2rem] absolute top-0'>Lagos State Digital Onboarders CDS</h2>
           <img src = {images.Group1} alt="svg" className = "absolute bottom-[5vh] xl:bottom-[15vh]" />
           <img src={images.Vector} alt="vector" className = "hidden xl:block absolute rotate-180 right-0 bottom-[-25vh] w-[25%]"/>
           <img src={images.Vector} alt="vector" className = "hidden xl:block absolute rotate-180 left-0 bottom-[-25vh] w-[25%]" />
           
-          <div className='absolute lg:top-[45vh] md:top-[45vh] top-[38vh] xl:top-[55vh] xs:mb-[10rem]  md:w-[80%] w-[85%] xl:w-[50%] bg-white rounded-lg shadow-xl p-8'>
+          <div className='absolute lg:top-[40vh] md:top-[45vh] top-[38vh] xl:top-[55vh] xs:mb-[10rem]  md:w-[80%] w-[85%] xl:w-[50%] bg-white rounded-lg shadow-xl p-8'>
             <div>
               <h1 className='text-[#AF6E4D] text-2xl '>Mission</h1>
 
