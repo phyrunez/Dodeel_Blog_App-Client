@@ -21,7 +21,7 @@ const AboutUsPage = () => {
                       <div className=''>
                         <h1 className='text-[#FFBF00] md:text-2xl lg:text-2xl text-base'>Our Culture</h1>
 
-                        <div className='mt-[0.5rem] md:leading-10 xl:leading-7 lg:leading-5 leading-6 lg:text-2xl md:text-2xl text-sm'>
+                        <div className='mt-[0.5rem] md:leading-10 xl:leading-7 lg:leading-8 leading-6 lg:text-xl md:text-xl text-sm'>
                           <p className='font font-poppins'>At Digital Onboarders CDS, our culture thrives on skill development, open communication, order, and a strong community spirit. We
                             honor and respect diverse perspectives, consistently pursue excellence, and encourage innovative thinking. Above all, we embrace a growth
                             mindset that propels us to overcome challenges and achieve continuous personal and collective growth.
