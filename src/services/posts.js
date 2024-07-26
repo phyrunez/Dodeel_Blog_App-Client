@@ -8,7 +8,7 @@ export const addPost = async({ title, author, introText, supportText, italicText
 {
     try {
         
-        const { data } = await axios.post(`api/posts`, {
+        const { data } = await axios.post(`${API_URL}/posts`, {
             title, author, introText, supportText, italicText,
             summaryText, mainPhoto, supportPhoto, category, date, likes
         })
