@@ -71,7 +71,7 @@ const ArticleDetailPage = () => {
             setBreadCrumbsData([
                 { name: 'Home', link: '/' },
                 { name: 'Blog', link: '/blog' },
-                { name: `${data.title}`, link: `https://dodeel-blog-app-client.onrender.com/blog/${data.slug}` }
+                { name: `${data.title}`, link: `https://dodeel-blog-app-client.vercel.app/blog/${data.slug}` }
             ])
         } 
 
@@ -163,7 +163,7 @@ const ArticleDetailPage = () => {
                                     alt="instagram" onClick={() => handleLike(data)} /><span className="text-[#025750]">{isPending ? "Thanks for stopping by..." : postLikes[data?.slug] || data?.likes}</span>
                                     {/* <img className="cursor-pointer h-4 w-4" src={images.Union} alt="twitter" /> */}
                                    
-                                    <img className="cursor-pointer h-4 w-4 mb-1" src={images.Polygon} onClick={() => setProfileDropdown(!profileDropdown)} alt="youtube" /><span className={`${profileDropdown ? 'block' : 'hidden' }`}><SocialShareButtons url={`https://dodeel-blog-app-client.onrender.com/blog/${data.slug}`} title={data.title} /></span>
+                                    <img className="cursor-pointer h-4 w-4 mb-1" src={images.Polygon} onClick={() => setProfileDropdown(!profileDropdown)} alt="youtube" /><span className={`${profileDropdown ? 'block' : 'hidden' }`}><SocialShareButtons url={`https://dodeel-blog-app-client.vercel.app/blog/${data.slug}`} title={data.title} /></span>
                                     {/* <img className="cursor-pointer h-4 w-4" src={images.Rectangle} alt="linkedin" /> */}
                                 </div>
                             </div>
