@@ -5,7 +5,7 @@ console.log(API_URL)
 
 export const sendMessage = async({ contactData }) => {
     try {
-        const { data } = await axios.post(`${API_URL}/contacts`, contactData);
+        const { data } = await axios.post(`${API_URL}/api/contacts`, contactData);
         return data;
     } catch (error) {
         if(error.response && error.response.data.message) throw new Error(error.response.data.message)
@@ -15,7 +15,7 @@ export const sendMessage = async({ contactData }) => {
 
 export const getAllMessages = async(searchKeyword = "", page, pageSize) => {
     try {
-        const  { data } = await axios.get(`${API_URL}/contacts/?searchKeyword=${searchKeyword}`, {
+        const  { data } = await axios.get(`${API_URL}/api/contacts/?searchKeyword=${searchKeyword}`, {
             params: { page, pageSize }
         })
         console.log({ data })
