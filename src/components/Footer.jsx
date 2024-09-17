@@ -39,7 +39,7 @@ const Footer = () => {
             </div> */}
             <footer className="container my-15 mx-auto w-full md:w-[70%] xl:max-w-[50%] px-12 py-4 items-center">
                 <h1 className='font-montserrat text-3xl text-center font-bold py-5 text-white md:text-center md:text-3xl lg:text-center lg:text-3xl lg:font-bold'>
-                    Get our stories delivered From us to your inbox weekly.
+                    Get our stories delivered from us to your inbox weekly.
                 </h1>
                 <div className="flex flex-col xl:flex-row gap-x-2 space-y-2 my-4 mx-auto w-full xl:w-[70%] items-center">
                     <input 
