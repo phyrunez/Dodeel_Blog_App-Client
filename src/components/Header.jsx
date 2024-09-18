@@ -73,6 +73,32 @@ const Header = () => {
                         return <NavItem key={item.name} item={item} />
                     })}
                 </ul>
+                <div className="relative group">
+                    <div className='flex flex-col items-center'>
+                        <button className='flex gap-x-1 items-center mt-5 lg:mt-0 border-2text-white rounded-md px-5 py-1 text-whte font-semibold transition-all duration-300' onClick={() => setProfileDropdown(!profileDropdown)}>
+                            <span>Status</span>
+                            <MdOutlineKeyboardArrowDown />
+                        </button>
+                        <div className={`${profileDropdown ? 'block' : 'hidden' } lg:hidden transition-all duration-500 pt-4 lg:absolute lg:bottom-0 lg:right-0 lg:transform lg:translate-y-full lg:group-hover:block w-max`}>
+                            <ul className="bg-[#929E9B] text-center flex flex-col shadow-lg rounded-lg overflow-hidden">         
+                                <button 
+                                    onClick={ () => navigate("/attendanceStatus") }
+                                    type='button'
+                                    className='hover:bg-dark-hard hover:text-white px-4 py-2 text-white lg:text-dark-soft'
+                                >
+                                    Attendance
+                                </button>
+                                <button 
+                                    onClick={ () => navigate("/paymentStatus") }
+                                    type='button'
+                                    className='hover:bg-dark-hard hover:text-white px-4 py-2 text-white lg:text-dark-soft'
+                                >
+                                    Dues
+                                </button>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
                 {/* {console.log(userState.userInfo)} */}
                 {userState.userInfo ? (
 

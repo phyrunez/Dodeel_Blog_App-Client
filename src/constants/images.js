@@ -41,6 +41,8 @@ import Official_5 from '../assets/official_5.jpeg'
 import NewLogo from '../assets/new_logo.png'
 import WhatsAppLogo from '../assets/WhatsApp-Logo.png'
 import TwitterLogo from '../assets/Twitter-Logo.jpg'
+import Attendance from "../assets/attendance.PNG"
+import Payment from '../assets/payment.PNG'
 
 const images = {
     Logo,
@@ -84,7 +86,9 @@ const images = {
     Slide_7,
     NewLogo,
     WhatsAppLogo,
-    TwitterLogo
+    TwitterLogo,
+    Attendance,
+    Payment
 }
 
 export default images
