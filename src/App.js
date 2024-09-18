@@ -18,7 +18,7 @@ import AdminLayout from "./pages/admin/AdminLayout"
 // import Messages from './pages/admin/screens/Messages';
 import AllUsers from './pages/admin/screens/AllUsers'
 import AttendanceStatusPage from './pages/attendance/AttendanceStatusPage';
-import PaymentStatusPage from './pages/attendance/PaymentStatusPage';
+import PaymentStatusPage from './pages/payment/PaymentStatusPage';
 
 function App() {
   return (
