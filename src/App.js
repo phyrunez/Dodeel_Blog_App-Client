@@ -17,6 +17,8 @@ import ManagePost from "./pages/admin/screens/ManagePost"
 import AdminLayout from "./pages/admin/AdminLayout"
 // import Messages from './pages/admin/screens/Messages';
 import AllUsers from './pages/admin/screens/AllUsers'
+import AttendanceStatusPage from './pages/attendance/AttendanceStatusPage';
+import PaymentStatusPage from './pages/attendance/PaymentStatusPage';
 
 function App() {
   return (
@@ -37,6 +39,8 @@ function App() {
         </Route>
         <Route path='/about' element={<AboutUsPage />} />
         <Route path='/contact-us' element={<ContactUsPage />} />
+        <Route path='/attendanceStatus' element={<AttendanceStatusPage />} />
+        <Route path='/paymentStatus' element={<PaymentStatusPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
       <Toaster />
