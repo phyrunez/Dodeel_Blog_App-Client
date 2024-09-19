@@ -37,7 +37,7 @@ const AboutUsPage = () => {
         </div>
 
         <div className=' xl:w-screen lg:h-[50vh] md:h-[40vh] h-[30vh] xl:h-[70vh] bg-[#025750] relative w-full xl:mx-0 mb-[150vh] lg:mb-[80vh] md:mb-[120vh] xl:mt-[20%] lg:mt-[0%] md:mt-[30%] flex items-center justify-center'>
-          <h2 className='text-white font-semibold xl:font-bold leading-[31.99px] text-center mt-[4rem] absolute top-0 font-anton tracking-widest text-[20px] lg:text-[57px] md:text-[40px] xl:text-[50px]'>Lagos State Digital Onboarders CDS</h2>
+          <h2 className='text-white font-bold xl:font-bold leading-[31.99px] text-center mt-[4rem] absolute top-0 font-anton tracking-[0.3em] text-[20px] lg:text-[57px] md:text-[40px] xl:text-[50px]'>Lagos State Digital Onboarders CDS</h2>
           <img src = {images.Group1} alt="svg" className = "absolute bottom-[5vh] xl:bottom-[15vh]" />
           <img src={images.Vector} alt="vector" className = "hidden xl:block absolute rotate-180 right-0 bottom-[-25vh] w-[25%]"/>
           <img src={images.Vector} alt="vector" className = "hidden xl:block absolute rotate-180 left-0 bottom-[-25vh] w-[25%]" />
